@@ -54,7 +54,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.FilthyRich, 3 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int TreasureMapLevel{ get{ return 4; } }
 
 		/* TODO: Angry Fire

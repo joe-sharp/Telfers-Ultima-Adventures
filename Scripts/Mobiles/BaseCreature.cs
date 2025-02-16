@@ -455,8 +455,8 @@ namespace Server.Mobiles
 		} }
 
 		public virtual bool IsBondable{ get{ return ( BondingEnabled && !Summoned ); } }
-		public virtual TimeSpan BondingDelay{ get{ return TimeSpan.FromDays( 7.0 ); } }
-		public virtual TimeSpan BondingAbandonDelay{ get{ return TimeSpan.FromDays( 1.0 ); } }
+		public virtual TimeSpan BondingDelay{ get{ return TimeSpan.FromDays( 1.0 ); } } // originally 7.0
+		public virtual TimeSpan BondingAbandonDelay{ get{ return TimeSpan.FromDays( 0.25 ); } } // originally 1.0
 
 		public override bool CanRegenHits{ get{ return !m_IsDeadPet && base.CanRegenHits; } }
 		public override bool CanRegenStam{ get{ return !m_IsDeadPet && base.CanRegenStam; } }

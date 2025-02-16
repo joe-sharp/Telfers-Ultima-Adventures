@@ -1,0 +1,10 @@
+*.log
+Adventures Server.sln
+Backups/
+Client/
+Documentation/Info*
+Info/
+Logs/
+Saves/
+Scripts/Output
+_README.txt

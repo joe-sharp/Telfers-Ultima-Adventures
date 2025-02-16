@@ -12,7 +12,7 @@ public override bool BleedImmune{ get{ return true; } }
 public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
 public override bool ShowFameTitle{ get { return false; } }
 public override bool Uncalmable{ get{ return true; } } 
-public override bool CanRummageCorpses{ get{ return true; } }
+public override bool CanRummageCorpses{ get{ return false; } }
 public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Orc; } }
 public override WeaponAbility GetWeaponAbility() { switch (Utility.Random(2)) { default:
 case 0: return WeaponAbility.BleedAttack; case 1: return WeaponAbility.MortalStrike; }}

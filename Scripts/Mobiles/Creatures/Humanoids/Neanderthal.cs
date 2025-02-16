@@ -77,7 +77,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int Meat{ get{ return 2; } }
 
 		public Neanderthal( Serial serial ) : base( serial )

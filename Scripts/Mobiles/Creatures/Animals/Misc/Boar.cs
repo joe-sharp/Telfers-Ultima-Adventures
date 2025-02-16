@@ -10,7 +10,7 @@ namespace Server.Mobiles
 	[CorpseName( "a pig corpse" )]
 	public class Boar : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public Boar() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{

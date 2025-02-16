@@ -60,7 +60,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Rich );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int Hides{ get{ return 8; } }
 
 		public RatmanArcher( Serial serial ) : base( serial )

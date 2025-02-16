@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	[CorpseName( "a bear corpse" )]
 	public class GreatBear : BaseMount
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public GreatBear() : this( "a great bear" )
 		{

@@ -49,7 +49,7 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune{ get{ return Poison.Greater; } }
 		public override Poison HitPoison{ get{ return (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly); } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int TreasureMapLevel{ get{ return 1; } }
 		public override int Meat{ get{ return 2; } }
 

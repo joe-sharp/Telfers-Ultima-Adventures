@@ -124,7 +124,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int Meat{ get{ return 1; } }
 		public override int Hides{ get{ return 12; } }
 		public override HideType HideType{ get{ return HideType.Horned; } }

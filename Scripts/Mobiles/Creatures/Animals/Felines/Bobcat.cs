@@ -6,7 +6,7 @@ namespace Server.Mobiles
 	[CorpseName( "a feline corpse" )]
 	public class Bobcat : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public Bobcat() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{

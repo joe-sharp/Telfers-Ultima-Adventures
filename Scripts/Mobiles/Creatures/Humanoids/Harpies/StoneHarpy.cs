@@ -110,7 +110,7 @@ namespace Server.Mobiles
 			m_NextPeace = DateTime.UtcNow + TimeSpan.FromSeconds( 10 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int Feathers{ get{ return 50; } }
 
 		public StoneHarpy( Serial serial ) : base( serial )

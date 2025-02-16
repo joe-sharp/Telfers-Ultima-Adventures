@@ -38,7 +38,7 @@ namespace Server.Mobiles
 		public override HideType HideType{ get{ return HideType.Draconic; } }
 		public override int Scales{ get{ return 9; } }
 		public override bool CanAngerOnTame { get { return true; } }
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}} // chewed items suck
 
 		public Wyrms( Serial serial ) : base( serial )
 		{

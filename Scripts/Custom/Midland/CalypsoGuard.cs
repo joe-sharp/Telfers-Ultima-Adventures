@@ -197,7 +197,7 @@ namespace Server.Mobiles
 	    AddLoot( LootPack.Average );
 	}
 
-	public override bool CanRummageCorpses{ get{ return true; } }
+	public override bool CanRummageCorpses{ get{ return false; } }
 	public override bool CanHeal { get { return true; } }
 			public override bool OnDragDrop( Mobile from, Item dropped )
 		{

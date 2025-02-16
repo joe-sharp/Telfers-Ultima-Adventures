@@ -43,7 +43,8 @@ namespace Server.Gumps
 			if (penalty >= 0.999)
 				penalty = 0.999;
 
-            int HealCost = GetPlayerInfo.GetResurrectCost( from );
+            // int HealCost = GetPlayerInfo.GetResurrectCost( from );
+            int HealCost = 0;
 			int BankGold = Banker.GetBalance( from );
 
 			string sText;

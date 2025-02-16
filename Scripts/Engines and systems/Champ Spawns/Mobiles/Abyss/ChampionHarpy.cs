@@ -97,7 +97,7 @@ namespace Server.Mobiles
 			return 918;
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int Meat{ get{ return 4; } }
 		public override MeatType MeatType{ get{ return MeatType.Bird; } }
 		public override int Feathers{ get{ return 50; } }

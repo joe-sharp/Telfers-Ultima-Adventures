@@ -62,7 +62,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.FilthyRich, 1 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int TreasureMapLevel{ get{ return 4; } }
 		public override int Hides{ get{ return 18; } }

@@ -62,7 +62,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager, 2 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int Meat{ get{ return 1; } }
 
 		public OrcCaptain( Serial serial ) : base( serial )

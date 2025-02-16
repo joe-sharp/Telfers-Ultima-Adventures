@@ -160,6 +160,13 @@ namespace Server.Custom
 					return;
 				}
 
+				// Hack to prevent losing invlun on pack mule
+				if (targeted is PackMule )
+				{
+					from.SendMessage("Telfer says not to hitch that or it will lose its invulnerability!");
+					return;
+				}
+
 				if (targeted is GolemPorter )
 				{
 					from.SendMessage("You can't see a way to hitch that, try the controller.");

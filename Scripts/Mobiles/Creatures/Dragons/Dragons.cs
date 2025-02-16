@@ -50,7 +50,7 @@ namespace Server.Mobiles
 		public override HideType HideType{ get{ return HideType.Draconic; } }
 		public override int Scales{ get{ if ( rBody == 61 ){ return 3; } else { return 7; } } }
 		public override bool CanAngerOnTame { get { if ( rBody == 61 ){ return false; } else { return true; } } }
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 
 		public Dragons( Serial serial ) : base( serial )
 		{

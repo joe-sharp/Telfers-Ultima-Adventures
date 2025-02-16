@@ -10,7 +10,7 @@ namespace Server.Mobiles
 	[CorpseName( "a lycanthrope corpse" )] 
 	public class WereWolf : BaseCreature 
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override WeaponAbility GetWeaponAbility()
 		{
 			if ( this.Body == 708 || this.Body == 94 || this.Body == 34 || this.Body == 42 || this.Body == 39 )

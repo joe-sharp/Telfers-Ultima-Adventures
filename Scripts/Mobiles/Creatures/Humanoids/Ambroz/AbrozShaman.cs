@@ -84,7 +84,7 @@ namespace Server.Mobiles
 			return base.OnBeforeDeath();
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 
 		// TODO: Body Transformation
 

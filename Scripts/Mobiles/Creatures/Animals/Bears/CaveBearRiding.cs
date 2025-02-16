@@ -6,7 +6,7 @@ namespace Server.Mobiles
 	[CorpseName( "a bear corpse" )]
 	public class CaveBearRiding : BaseMount
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}} // chewed items suck
 		[Constructable]
 		public CaveBearRiding() : this( "a cave bear" )
 		{

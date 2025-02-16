@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	[TypeAlias( "Server.Mobiles.WhiteTiger" )]
 	public class WhiteTiger : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override WeaponAbility GetWeaponAbility()
 		{
 			return WeaponAbility.BleedAttack;

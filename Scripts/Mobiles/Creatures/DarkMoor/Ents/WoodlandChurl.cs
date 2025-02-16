@@ -58,7 +58,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Rich, 3 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int TreasureMapLevel{ get{ return 4; } }
 		public override bool CanAngerOnTame { get { return true; } }
 

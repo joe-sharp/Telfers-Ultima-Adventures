@@ -6,7 +6,7 @@ namespace Server.Mobiles
 	[CorpseName( "a shadow hound corpse" )]
 	public class ShadowHound : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public ShadowHound() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{

@@ -120,7 +120,7 @@ namespace Server.Mobiles
 		public override bool ClickTitle{ get{ return false; } }
 		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool AlwaysAttackable{ get{ return true; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override bool BardImmune { get { return true; } }
 		public override bool IsScaredOfScaryThings{ get{ return false; } }
 		public override bool IsScaryToPets{ get{ return true; } }

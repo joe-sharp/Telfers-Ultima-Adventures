@@ -7,7 +7,7 @@ namespace Server.Mobiles
 	[CorpseName( "a feline corpse" )]
 	public class SabretoothTiger : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override WeaponAbility GetWeaponAbility()
 		{
 			return WeaponAbility.BleedAttack;

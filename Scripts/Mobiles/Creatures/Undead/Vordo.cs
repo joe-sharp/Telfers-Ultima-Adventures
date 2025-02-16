@@ -155,7 +155,7 @@ namespace Server.Mobiles
 
 		public override bool BleedImmune{ get{ return false; } }
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool AlwaysAttackable{ get{ return true; } }
 		public override bool Unprovokable{ get{ return true; } }

@@ -22,7 +22,7 @@ namespace Server.Misc
 		{
 			// THE NAME OF YOUR SERVER
 			// DON'T MAKE THE NAME LONGER THAN THE CHARACTERS BELOW OR IT GETS CUT OFF
-			return "Ultima Adventures";
+			return "Telfer's UOA";
 		}
 
 		public static string FilesPath()
@@ -78,7 +78,7 @@ namespace Server.Misc
 			// THERE ARE MANY HIDDEN TRAPS ON THE FLOOR, BUT THE PERCENT CHANCE
 			// IS SET BELOW THAT THEY WILL TRIGGER WHEN WALKED OVER BY PLAYERS
 			// 20% IS THE DEFAULT...WHERE 0 IS NEVER AND 100 IS ALWAYS
-			return 35;
+			return 0;
 		}
 
 		public static int GetUnidentifiedChance()
@@ -103,7 +103,7 @@ namespace Server.Misc
 
 		public static int GetTimeBetweenArtifactQuests()
 		{
-			return 2880; // MINUTES
+			return 60; // MINUTES
 		}
 
 		public static int GetGoldCutRate() 
@@ -438,7 +438,7 @@ namespace Server.Misc
 
 		public static int BoatDecay() // HOW MANY DAYS A BOAT WILL LAST BEFORE IT DECAYS, WHERE USING IT REFRESHES THE TIME
 		{ 
-			return 30;
+			return 365;
 		}
 
 		public static double HomeDecay() // HOW MANY DAYS A HOUSE WILL LAST BEFORE IT DECAYS, WHERE USING IT REFRESHES THE TIME
@@ -447,10 +447,7 @@ namespace Server.Misc
 		}
 
 		public static bool HousesDecay(object house) // DO HOUSES DECAY IN YOUR GAME AT ALL?
-		{
-			if (house is TownHouse)
-				return true;
-			
+		{			
 			return false;
 		}
 
@@ -495,7 +492,7 @@ namespace Server.Misc
 
 		public static bool SellVeryRareChance() // CHANCE A VENDOR SELLS A VERY RARE ITEM. SET "chance" HIGHER FOR MORE OFTEN
 		{
-			int chance = 5;	if ( chance >= Utility.RandomMinMax( 1, 100 ) ){ return true; }
+			int chance = 10;	if ( chance >= Utility.RandomMinMax( 1, 100 ) ){ return true; }
 			return false;
 		}
 
@@ -518,7 +515,7 @@ namespace Server.Misc
 		}
 		public static bool BuyVeryRareChance() // CHANCE A VENDOR BUYS A RARE ITEM. SET "chance" HIGHER FOR MORE OFTEN
 		{
-			int chance = 5;	if ( chance >= Utility.RandomMinMax( 1, 100 ) ){ return true; }
+			int chance = 10;	if ( chance >= Utility.RandomMinMax( 1, 100 ) ){ return true; }
 			return false;
 		}
 
@@ -532,8 +529,8 @@ namespace Server.Misc
 		
 		public static bool buysellcontext() // do you want vendors to have clickable context menus for buy/sell? (comment one OR the other)
 		{
-			//return true; 
-			return false;
+			return true; 
+			// return false;
 		}
 		
 		public static int decayrate() // note, itemdecay was disabled in this release.  if you want itemdecay, run runuo.exe.itemdecay instead and set the value here to the amount of time you want for item decay .  

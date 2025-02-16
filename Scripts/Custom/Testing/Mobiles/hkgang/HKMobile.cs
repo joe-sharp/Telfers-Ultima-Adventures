@@ -166,7 +166,7 @@ namespace Server.Engines.HunterKiller
 
 		public override bool PlayerRangeSensitive{ get { return false; } }
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 
 		public override void Serialize( GenericWriter writer )
 		{

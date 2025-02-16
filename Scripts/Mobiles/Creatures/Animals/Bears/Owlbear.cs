@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	[CorpseName( "an owlbear corpse" )]
 	public class Owlbear : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override WeaponAbility GetWeaponAbility()
 		{
 			return WeaponAbility.BleedAttack;

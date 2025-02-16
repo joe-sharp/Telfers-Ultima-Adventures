@@ -39,7 +39,7 @@ namespace Server.Mobiles
 		public override int Meat{ get{ return 1; } }
 		public override int Hides{ get{ return 18; } }
 		public override HideType HideType{ get{ return HideType.Hellish; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 
 		public Daemon( Serial serial ) : base( serial )
 		{

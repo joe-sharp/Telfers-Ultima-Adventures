@@ -52,7 +52,7 @@ namespace Server.Mobiles
                             }
                                  public override bool HasBreath{ get{ return true ; } }
                                  public override bool AutoDispel{ get{ return true; } }
-				 public override bool CanRummageCorpses{ get{ return true; } }
+				 public override bool CanRummageCorpses{ get{ return false; } }
                                  public override bool BardImmune{ get{ return true; } }
                                  public override bool Unprovokable{ get{ return true; } }
                                  public override Poison HitPoison{ get{ return Poison. Lethal ; } }

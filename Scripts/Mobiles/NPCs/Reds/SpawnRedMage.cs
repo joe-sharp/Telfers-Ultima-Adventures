@@ -103,7 +103,8 @@ public SpawnRedMage() : base( AIType.AI_Mage, FightMode.Closest, 25, 1, 0.4, 0.3
 
             //SetDamage(18, 22);
 
-            SetDamageType(ResistanceType.Physical, 100);
+			// Nerf to shit
+            SetDamageType(ResistanceType.Physical, 10);
 
             SetResistance(ResistanceType.Physical, 40, 60);
             SetResistance(ResistanceType.Fire, 40, 60);
@@ -111,15 +112,33 @@ public SpawnRedMage() : base( AIType.AI_Mage, FightMode.Closest, 25, 1, 0.4, 0.3
             SetResistance(ResistanceType.Poison, 40, 60);
             SetResistance(ResistanceType.Energy, 40, 60);
 
-            SetSkill(SkillName.Swords, 89.0, 120.0);
-            SetSkill(SkillName.Tactics, 89.0, 120.0);
-            SetSkill(SkillName.MagicResist, 89.0, 120.0);
-            SetSkill(SkillName.Tactics, 89.0, 120.0);
-            SetSkill(SkillName.Parry, 89.0, 120.0);
-            SetSkill(SkillName.Anatomy, 85.0, 120.0);
-            SetSkill(SkillName.Healing, 85.0, 120.0);
-            SetSkill(SkillName.Magery, 95.0, 120.0);
-            SetSkill(SkillName.EvalInt, 95.0, 120.0);
+            SetSkill(SkillName.Swords, 8.0, 12.0);
+            SetSkill(SkillName.Tactics, 8.0, 12.0);
+            SetSkill(SkillName.MagicResist, 8.0, 12.0);
+            SetSkill(SkillName.Tactics, 8.0, 12.0);
+            SetSkill(SkillName.Parry, 8.0, 12.0);
+            SetSkill(SkillName.Anatomy, 8.0, 12.0);
+            SetSkill(SkillName.Healing, 8.0, 12.0);
+            SetSkill(SkillName.Magery, 9.0, 12.0);
+            SetSkill(SkillName.EvalInt, 9.0, 12.0);
+
+            // SetDamageType(ResistanceType.Physical, 100);
+
+            // SetResistance(ResistanceType.Physical, 40, 60);
+            // SetResistance(ResistanceType.Fire, 40, 60);
+            // SetResistance(ResistanceType.Cold, 40, 60);
+            // SetResistance(ResistanceType.Poison, 40, 60);
+            // SetResistance(ResistanceType.Energy, 40, 60);
+
+            // SetSkill(SkillName.Swords, 89.0, 120.0);
+            // SetSkill(SkillName.Tactics, 89.0, 120.0);
+            // SetSkill(SkillName.MagicResist, 89.0, 120.0);
+            // SetSkill(SkillName.Tactics, 89.0, 120.0);
+            // SetSkill(SkillName.Parry, 89.0, 120.0);
+            // SetSkill(SkillName.Anatomy, 85.0, 120.0);
+            // SetSkill(SkillName.Healing, 85.0, 120.0);
+            // SetSkill(SkillName.Magery, 95.0, 120.0);
+            // SetSkill(SkillName.EvalInt, 95.0, 120.0);
 
             Fame = 9500;
             Karma = -9500;
@@ -234,7 +253,7 @@ public SpawnRedMage() : base( AIType.AI_Mage, FightMode.Closest, 25, 1, 0.4, 0.3
 			m_dispelling = false;
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override bool CanHeal { get { return true; } }
 
 		public override void OnAfterSpawn()

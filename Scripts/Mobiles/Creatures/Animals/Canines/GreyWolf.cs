@@ -7,7 +7,7 @@ namespace Server.Mobiles
 	[TypeAlias( "Server.Mobiles.Greywolf" )]
 	public class GreyWolf : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public GreyWolf() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{

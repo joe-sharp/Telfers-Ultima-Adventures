@@ -9,7 +9,7 @@ namespace Server.Mobiles
 	[TypeAlias( "Server.Mobiles.Whitewolf" )]
 	public class WhiteWolf : BaseMount
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public WhiteWolf() : this( "a white wolf" )
 		{

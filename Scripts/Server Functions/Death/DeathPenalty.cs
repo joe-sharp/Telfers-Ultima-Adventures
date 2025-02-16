@@ -17,7 +17,7 @@ namespace Server.Misc
 
 		public static void Penalty( Mobile from, bool allPenalty, bool ankh )
         {
-			if ( !(from is PlayerMobile) || from == null)
+			if ( !(from is PlayerMobile) || from == null || from is PlayerMobile)
 				return;
 
 				if ( ((PlayerMobile)from).SoulBound )

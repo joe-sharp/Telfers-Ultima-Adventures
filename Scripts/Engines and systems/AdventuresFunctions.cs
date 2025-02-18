@@ -884,7 +884,7 @@ namespace Server.Misc
 		public static void InvasionRoutine( bool start)
 		{
 			bool newinvasion = false;
-			if (AetherGlobe.invasionstage == 0)// currently no invasion, 5% chance of having one
+			if (AetherGlobe.invasionstage == 0)// currently no invasion, 5% chance of having one //- Nerfing this below actually -Telfer
 			{
 				int reinforcements = 0;
 
@@ -896,7 +896,7 @@ namespace Server.Misc
 					}
 				}
 
-				double odds = 0.05 + (reinforcements /500);
+				double odds = 0;
 
 				if (Utility.RandomDouble() <= odds || start )
 				{

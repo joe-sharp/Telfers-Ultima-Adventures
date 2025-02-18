@@ -3845,19 +3845,19 @@ A little mouse catches sight of you and flees into a small hole in the ground.*/
             }
 
             //Zombiex and canchew
-            if (FindMostRecentDamager(true) is BaseCreature && !this.SoulBound )
-            {
-				BaseCreature mo = (BaseCreature)FindMostRecentDamager(true);
+            // if (FindMostRecentDamager(true) is BaseCreature && !this.SoulBound )
+            // {
+			// 	BaseCreature mo = (BaseCreature)FindMostRecentDamager(true);
 
-				if ( mo.CanChew )
-					ChewItem( mo );
+			// 	if ( mo.CanChew )
+			// 		ChewItem( mo );
 
-				if (mo is Zombiex || mo.CanInfect || mo is WanderingConcubine && (Str + Dex + Int) > 125 )
-				{
-					Zombiex zomb = new Zombiex();
-					zomb.NewZombie(this);
-				}
-            }
+			// 	if (mo is Zombiex || mo.CanInfect || mo is WanderingConcubine && (Str + Dex + Int) > 125 )
+			// 	{
+			// 		Zombiex zomb = new Zombiex();
+			// 		zomb.NewZombie(this);
+			// 	}
+            // }
             //Zombiex end
 
             else if (FindMostRecentDamager(true) is PlayerMobile )

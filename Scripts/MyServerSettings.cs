@@ -184,7 +184,7 @@ namespace Server.Misc
 			// IF TRUE, ALL CREATURES WILL HAVE SOME FORM OF DETECT HIDDEN SKILL
 			// THAT IS BASED ON THEIR CREATURE LEVEL. THIS MAKES THE STEALTHY
 			// THIEVES HAVE MORE OF A CHALLENGE WHEN THEY ARE TOMB RAIDING
-			return true;
+			return false;
 		}
 
 		public static bool NoMountsInCertainRegions()

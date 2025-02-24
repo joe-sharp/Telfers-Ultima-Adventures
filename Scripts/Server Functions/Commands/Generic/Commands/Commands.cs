@@ -806,13 +806,13 @@ namespace Server.Commands.Generic
 
 			if ( value )
 			{
-				AccessLevel = AccessLevel.GameMaster
+				AccessLevel = AccessLevel.GameMaster;
 				Usage = "Kill";
 				Description = "Kills a targeted player or npc.";
 			}
 			else
 			{
-				AccessLevel = AccessLevel.Counselor
+				AccessLevel = AccessLevel.Counselor;
 				Usage = "Resurrect";
 				Description = "Resurrects a targeted ghost.";
 			}

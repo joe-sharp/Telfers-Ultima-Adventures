@@ -898,7 +898,7 @@ namespace Server.Misc
 
 				// Nerf
 				// double odds = 0.05 + (reinforcements /500);
-				double odds = 0
+				double odds = 0;
 
 				if (Utility.RandomDouble() <= odds || start )
 				{

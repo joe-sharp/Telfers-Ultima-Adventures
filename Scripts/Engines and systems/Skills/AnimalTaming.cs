@@ -417,14 +417,14 @@ namespace Server.SkillHandlers
 								
 						}
 
-						if ( !alreadyOwned ) // Passively check animal lore for gain // FInal added taming too!
+						if ( !alreadyOwned || alreadyOwned ) // Allow retame gains // Passively check animal lore for gain // FInal added taming too!
 						{
 							switch ( Utility.Random( 2 ) )
 							{
-								case 0: m_Tamer.CheckTargetSkill( SkillName.AnimalTaming, m_Creature, m_Creature.MinTameSkill - 25, m_Creature.MinTameSkill + 25 ); break;
+								case 0: m_Tamer.CheckTargetSkill( SkillName.AnimalLore, m_Creature, m_Creature.MinTameSkill - 25, m_Creature.MinTameSkill + 25 ); break;
 								case 1: break;
 							}
-							m_Tamer.CheckTargetSkill( SkillName.AnimalLore, m_Creature, m_Creature.MinTameSkill - 25, m_Creature.MinTameSkill + 25 ); //+++
+							m_Tamer.CheckTargetSkill( SkillName.AnimalTaming, m_Creature, m_Creature.MinTameSkill - 25, m_Creature.MinTameSkill + 25 ); //+++
 						}
 
 						if ( m_Creature.Paralyzed )
@@ -444,7 +444,7 @@ namespace Server.SkillHandlers
 						if ( m_Creature.Paralyzed )
 							m_Paralyzed = true;
 
-						if ( !alreadyOwned ) // Passively check animal lore for gain // FInal added taming too!
+						if ( !alreadyOwned || alreadyOwned ) // Allow retame gains // Passively check animal lore for gain // FInal added taming too!
 						{
 							switch ( Utility.Random( 2 ) )
 							{
@@ -460,9 +460,9 @@ namespace Server.SkillHandlers
 							if ( m_Creature.Owners.Count == 0 ) // First tame
 							{
 								if ( m_Paralyzed )
-									ScaleSkills( m_Creature, 0.65 ); // 86% of original skills if they were paralyzed during the taming
+									ScaleSkills( m_Creature, 0.86 ); // 86% of original skills if they were paralyzed during the taming
 								else
-									ScaleSkills( m_Creature, 0.80 ); // 90% of original skills
+									ScaleSkills( m_Creature, 0.90 ); // 90% of original skills
 
 								if ( m_Creature.StatLossAfterTame )
 									ScaleStats( m_Creature, 0.50 );
@@ -470,7 +470,10 @@ namespace Server.SkillHandlers
 
 							if ( alreadyOwned )
 							{
-								m_Tamer.SendLocalizedMessage( 502797 ); // That wasn't even challenging.
+								// m_Tamer.SendLocalizedMessage( 502797 ); // That wasn't even challenging.
+								// Since we are allowing retames above:
+								m_Creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502799, m_Tamer.NetState ); // It seems to accept you as master.
+								m_Creature.Owners.Add( m_Tamer );
 							}
 							else
 							{

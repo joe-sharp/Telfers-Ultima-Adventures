@@ -1877,7 +1877,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "house teleporter", typeof( PlayersHouseTeleporter ), 25000, Utility.Random( 1,10 ), 0x181D, 0 ) );
 				Add( new GenericBuyInfo( "house high teleporter", typeof( PlayersZTeleporter ), 15000, Utility.Random( 1,10 ), 0x181D, 0 ) );
 				if ( Server.Items.MovingBox.IsEnabled() ){ Add( new GenericBuyInfo( typeof( MovingBox ), 1500, Utility.Random( 1,100 ), 0xE3D, 0xAC0 ) ); }
-				//if ( Server.Items.BasementDoor.IsEnabled() ){ Add( new GenericBuyInfo( typeof( BasementDoor ), 2500, Utility.Random( 1,100 ), 0x02C1, 0 ) ); }
+				if ( Server.Items.BasementDoor.IsEnabled() ){ Add( new GenericBuyInfo( typeof( BasementDoor ), 2500, Utility.Random( 1,100 ), 0x02C1, 0 ) ); }
 				Add( new GenericBuyInfo( typeof( house_sign_sign_post_a ), 500, Utility.Random( 1,100 ), 2967, 0 ) );
 				Add( new GenericBuyInfo( typeof( house_sign_sign_post_b ), 500, Utility.Random( 1,100 ), 2970, 0 ) );
 				Add( new GenericBuyInfo( typeof( house_sign_sign_merc ), 1000, Utility.Random( 1,100 ), 3082, 0 ) );

@@ -697,13 +697,17 @@ namespace Server.Engines.Apiculture
 		public void UpdateMaladies()
 		{
 			//more water = more chance to come into contact with parasites?
-			double parasiteChance = 0.30 - (potStrength * 0.075) + (((int)ScaleWater() - 3 ) * 0.10) + (HiveAge * 0.01);  //Older hives are more susceptible to infestation 
+			// double parasiteChance = 0.30 - (potStrength * 0.075) + (((int)ScaleWater() - 3 ) * 0.10) + (HiveAge * 0.01);  //Older hives are more susceptible to infestation
+			// No Parasite Chance
+			double parasiteChance = 0;
 
 			if ( Utility.RandomDouble() < parasiteChance )
 				ParasiteLevel++;
 
 			//more flowers = more chance to come into conctact with disease carriers
-			double diseaseChance = 0.30 - (potStrength * 0.075) + (((int)ScaleFlower() - 3 ) * 0.10) + (HiveAge * 0.01);  //Older hives are more susceptible to disease 
+			// double diseaseChance = 0.30 - (potStrength * 0.075) + (((int)ScaleFlower() - 3 ) * 0.10) + (HiveAge * 0.01);  //Older hives are more susceptible to disease
+			// No Disease
+			double diseaseChance = 0;
 
 			if ( Utility.RandomDouble() < diseaseChance )
 				DiseaseLevel++;

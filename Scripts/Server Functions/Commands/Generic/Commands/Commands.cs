@@ -799,18 +799,20 @@ namespace Server.Commands.Generic
 		{
 			m_Value = value;
 
-			AccessLevel = AccessLevel.GameMaster;
+			// AccessLevel = AccessLevel.GameMaster;
 			Supports = CommandSupport.AllMobiles;
 			Commands = value ? new string[]{ "Kill" } : new string[]{ "Resurrect", "Res" };
 			ObjectTypes = ObjectTypes.Mobiles;
 
 			if ( value )
 			{
+				AccessLevel = AccessLevel.GameMaster
 				Usage = "Kill";
 				Description = "Kills a targeted player or npc.";
 			}
 			else
 			{
+				AccessLevel = AccessLevel.Counselor
 				Usage = "Resurrect";
 				Description = "Resurrects a targeted ghost.";
 			}

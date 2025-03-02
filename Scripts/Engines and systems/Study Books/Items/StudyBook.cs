@@ -150,8 +150,8 @@ namespace Server.Items
 					if ( valueskill >= skill.Cap)
 						return;
 					
-					if (chance <= 0.01)
-						chance = 0.01;
+					if (chance <= 0.25)
+						chance = 0.25;
 					
 					bool success = ( chance >= Utility.RandomDouble() );
 

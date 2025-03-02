@@ -154,7 +154,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0x36;
                 this.Name = "25";
 				this.MinTameSkill = 25;
@@ -165,7 +165,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0xBB4;
                 this.Name = "40";
 				this.MinTameSkill = 40;
@@ -176,7 +176,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0xBA2;
                 this.Name = "50";
 				this.MinTameSkill = 50;
@@ -187,7 +187,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0x92C;
                 this.Name = "60";
 				this.MinTameSkill = 60;
@@ -198,7 +198,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0x94C;
                 this.Name = "70";
 				this.MinTameSkill = 70;
@@ -209,7 +209,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0x929;
                 this.Name = "80";
 				this.MinTameSkill = 80;
@@ -220,7 +220,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0xB6F;
                 this.Name = "90";
 				this.MinTameSkill = 90;
@@ -231,7 +231,7 @@ else
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
-				this.SetHits( 1, 2 )
+				this.SetHits( 1, 2 );
                 this.Hue = 0xAD4;
                 this.Name = "105";
 				this.MinTameSkill = 105;

@@ -136,11 +136,11 @@ namespace Server.Items
 					else
 						Points -= (int)rando; // randomize a bit
 
-					if (Points >= 65000)
+					if (Points >= 25000)
 						quality = 3;
-					else if (Points >= 25000)
+					else if (Points >= 10000)
 						quality = 2;
-					else if (Points < 25000)
+					else if (Points < 5000)
 						quality = 1;	
 
 					Item harvy = null;

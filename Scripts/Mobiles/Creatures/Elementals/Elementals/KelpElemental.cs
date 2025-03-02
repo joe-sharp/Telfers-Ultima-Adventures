@@ -140,7 +140,7 @@ namespace Server.Mobiles
 			if ( 1 == Utility.RandomMinMax( 1, 1 ) )
 			{
 				Container cont = m.Backpack;
-				Item iWrapped = Server.Items.HiddenTrap.GetMyItem( m );
+				Item iWrapped = null;
 
 				if ( iWrapped != null )
 				{

@@ -91,7 +91,7 @@ namespace Server.Mobiles
 			if ( 1 == Utility.RandomMinMax( 1, 20 ) && m is PlayerMobile )
 			{
 				Container cont = m.Backpack;
-				Item iStone = Server.Items.HiddenTrap.GetMyItem( m );
+				Item iStone = null;
 
 				if ( iStone != null )
 				{

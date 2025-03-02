@@ -150,7 +150,7 @@ else
 			// Training Mockobos
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3490)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
@@ -161,7 +161,7 @@ else
             }
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3488)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
@@ -172,7 +172,7 @@ else
             }
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3486)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
@@ -183,7 +183,7 @@ else
             }
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3484)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
@@ -194,7 +194,7 @@ else
             }
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3482)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
@@ -205,7 +205,7 @@ else
             }
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3480)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
@@ -216,7 +216,7 @@ else
             }
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3478)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );
@@ -227,7 +227,7 @@ else
             }
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3476)
             {
-				this.Direction = "East";
+				this.Direction = Direction.East;
 				this.Fame = 0;
 				this.Karma = 0;
 				this.SetDamage( 0, 0 );

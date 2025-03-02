@@ -30,7 +30,7 @@ namespace Server.Mobiles
 		{
 			InitStats( 31, 41, 51 );
 
-            Title = "the wench";
+            Title = "the pirate hooker";
             Body = 0x191; // female
             Name = NameList.RandomName(" female");
 

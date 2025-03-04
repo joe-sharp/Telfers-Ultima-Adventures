@@ -122,14 +122,9 @@ namespace Server.Mobiles
 
 		public override void OnDoubleClick( Mobile from )
 		{ 
-			if ( this.BaseSoundID == null )
-			{
-				// This isn't your mount; it refuses to let you ride.
-				PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 501264, from.NetState );
-				return;
-			}
-			
-			base.OnDoubleClick( from );
+			// This isn't your mount; it refuses to let you ride.
+			PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 501264, from.NetState );
+			return;
 		}
 
 		public override int Meat { get { return 1; } }

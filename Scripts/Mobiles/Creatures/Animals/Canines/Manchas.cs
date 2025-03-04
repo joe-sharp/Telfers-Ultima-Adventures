@@ -13,7 +13,7 @@ namespace Server.Mobiles
 			Body = 0xD9;
 			Hue = 0x86e;
 			BaseSoundID = 0x85;
-            Female = false
+            Female = false;
 
 			SetStr( 401, 430 );
 			SetDex( 133, 152 );

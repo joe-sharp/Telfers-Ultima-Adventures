@@ -56,7 +56,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3490)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0x36;
                 this.Name = "25";
 				this.MinTameSkill = 25;
@@ -64,7 +64,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3488)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0xBB4;
                 this.Name = "40";
 				this.MinTameSkill = 40;
@@ -72,7 +72,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3486)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0xBA2;
                 this.Name = "50";
 				this.MinTameSkill = 50;
@@ -80,7 +80,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3484)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0x92C;
                 this.Name = "60";
 				this.MinTameSkill = 60;
@@ -88,7 +88,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3482)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0x94C;
                 this.Name = "70";
 				this.MinTameSkill = 70;
@@ -96,7 +96,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3480)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0x929;
                 this.Name = "80";
 				this.MinTameSkill = 80;
@@ -104,7 +104,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3478)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0xB6F;
                 this.Name = "90";
 				this.MinTameSkill = 90;
@@ -112,7 +112,7 @@ namespace Server.Mobiles
             if (this.Map == Map.Trammel && this.Home.X == 3636 && this.Home.Y == 3476)
             {
 				this.Direction = Direction.East;
-				this.ControlSlots = 1
+				this.ControlSlots = 1;
                 this.Hue = 0xAD4;
                 this.Name = "105";
 				this.MinTameSkill = 105;

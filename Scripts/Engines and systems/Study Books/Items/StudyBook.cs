@@ -103,14 +103,6 @@ namespace Server.Items
 			
 			if (from.Skills[this._TrainingSkill].BaseFixedPoint + toGain > this._MaxSkillTrained)
 				toGain = this._MaxSkillTrained - from.Skills[this._TrainingSkill].BaseFixedPoint;//Cannot gain above the max for your study book.
-			//Skills gained in excess of 100 are gained at half-rate. To disable this, comment out below.
-			if (from.Skills[_TrainingSkill].BaseFixedPoint + toGain > 1000)
-			{
-				if (from.Skills[this._TrainingSkill].BaseFixedPoint <= 1000)
-					toGain -= (int)((toGain - (1000 - from.Skills[this._TrainingSkill].BaseFixedPoint)) / 2);//only reduces amount gained over 100
-				else
-					toGain /= 2; //Divides any remaining skill gains by 2 before proceeding
-			}
 
 			//from.SendMessage(0, "Debug: toGain is " + toGain);
 

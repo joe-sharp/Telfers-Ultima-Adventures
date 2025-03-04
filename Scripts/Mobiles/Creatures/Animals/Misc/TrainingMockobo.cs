@@ -15,10 +15,11 @@ namespace Server.Mobiles
 		}
 
 		[Constructable]
-		public TrainingMockobo( string name ) : base( name, 25, 0x19, AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
+		public TrainingMockobo( string name ) : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "a mockabo";
 			BaseSoundID = 0x2EE;
+			Body = 25;
             Hue = 0x36;
 
 			SetStr( 1 );

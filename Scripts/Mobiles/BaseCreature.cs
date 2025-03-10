@@ -5179,30 +5179,6 @@ namespace Server.Mobiles
 				if ( Utility.RandomDouble() < ((double)amount / (double)this.HitsMax)  )
 					this.Loyalty -= Utility.RandomMinMax(0, 2);
 			}
-			
-			//new injury system for tamed and controlled pets
-			
-			
-			if (willKill && this.Tamable && this.Controlled && !this.IsParagon && !this.Summoned ) //only pets who are going to die may earn injury
-			{
-				double halflife = (double)(Convert.ToInt32(this.m_maxLevel) /2); //uint doesnt like being converted using (int) or (double) for some weird reason
-				double lvl = (double)(Convert.ToInt32(this.Level));
-				double maxlvl = (double)(Convert.ToInt32(this.m_maxLevel));
-				
-				if (lvl > halflife) //pets under half of max levels won't get injured.
-				{
-					double odds = 0.15; // start at 15% odds of an injury
-					odds *= ( (lvl - halflife) / (maxlvl - halflife) ); //reduce the odds by the percentage difference to max level (max level pets get 15%, half level pets get 0%)
-					
-					int severity = 1; //set severity of the injury
-					
-					if ( Utility.RandomDouble() < ( ( ( (double)amount / (double)this.HitsMax) + (lvl / maxlvl) ) /2) && Utility.RandomBool() ) //big hits means more severity
-						severity = Utility.RandomMinMax(1, 3);
-
-					if (Utility.RandomDouble() < odds) //apply the injury
-						GainInjury(severity);
-				}
-			}
 
 			if ( from != null && from is PlayerMobile && ((PlayerMobile)from).BodyMod == 318 && ((double)this.Hits / (double)this.HitsMax) <= 0.80 ) // dark father morph
 			{

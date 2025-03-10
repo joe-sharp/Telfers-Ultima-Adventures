@@ -17,7 +17,7 @@ namespace Server.Mobiles
 			Body = 775;
 			BaseSoundID = 898;
 			Hue = 768;
-			CanInfect = true;
+			CanInfect = false;
 
 			SetStr( 61, 70 );
 			SetDex( 61, 70 );

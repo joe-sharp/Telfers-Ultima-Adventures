@@ -79,7 +79,7 @@ namespace Server.Mobiles
 
             VirtualArmor = 40;
 			
-	    CanInfect = true;
+	    CanInfect = false;
         }
 
         public override void GenerateLoot()

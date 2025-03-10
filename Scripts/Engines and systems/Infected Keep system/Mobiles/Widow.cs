@@ -25,7 +25,7 @@ namespace Server.Mobiles
 			Name = "The Widow";
 			Title = "";
 			Body = 84;
-			CanInfect = true;
+			CanInfect = false;
 			Hue = 1193;
 
 			BaseSoundID = 589;

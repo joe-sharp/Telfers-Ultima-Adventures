@@ -15,7 +15,7 @@ namespace Server.Mobiles
 			public override bool BleedImmune { get { if (this.CanInfect) {return true;} else {return false;} } }
 			public override Poison PoisonImmune { get { if (this.CanInfect) { return Poison.Lethal; }  else { return null; } } }
 			public override Poison HitPoison { get { if (this.CanInfect) { return Poison.Lethal; } else {return null;} } }
-        public override bool CanRummageCorpses { get { return true; } }
+        public override bool CanRummageCorpses { get { return false; } } // previously true
         private RotTimer m_Timer;
 
 

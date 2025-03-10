@@ -93,7 +93,7 @@ namespace Server.Mobiles
 		}
 		
 		public override bool AlwaysMurderer{get {return true; }}
-		public override bool CanRummageCorpses{get {return true; }}
+		public override bool CanRummageCorpses{get {return false; }} // previously true
 		
 		public Arcanist( Serial serial ) : base( serial )
 		{

@@ -71,7 +71,7 @@ namespace Server.Mobiles
 		}
 
         public override bool SubdueBeforeTame { get { return true; } }//Add or remove any other things you want the steed to do.
-        public override bool CanRummageCorpses { get { return true; } }
+        public override bool CanRummageCorpses { get { return false; } }// previously true
         public override bool HasBreath { get { return true; } }
 		public override int Meat{ get{ return 3; } }
 		public override int Hides{ get{ return 10; } }

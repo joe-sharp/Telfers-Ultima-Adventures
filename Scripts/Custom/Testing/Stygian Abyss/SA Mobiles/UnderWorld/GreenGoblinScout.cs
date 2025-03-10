@@ -97,7 +97,7 @@ namespace Server.Mobiles
                 TryToDetectHidden();
         }
 
-        public override bool CanRummageCorpses { get { return true; } }
+        public override bool CanRummageCorpses { get { return false; } } // previously true
         public override int Meat { get { return 1; } }
 
         public GreenGoblinScout(Serial serial)

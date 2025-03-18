@@ -425,13 +425,21 @@ namespace Server
 
 				value += bonusNotObey;
 
-				if( value < Cap )
+				// Adjust for bonuses exceeding the cap
+				if ( value < Cap )
 				{
 					value += bonusObey;
 
-					if( value > Cap )
-						value = Cap;
+					if ( value > Cap )
+					{
+						double excess = value - Cap;  // Calculate excess
+						value = Cap + (excess * 0.5); // Apply 50% rate to excess
+					}
 				}
+				else
+				{
+					// When already at or above the cap, apply bonuses at 50% rate
+					value += bonusObey * 0.5;
 
 				return value;
 			}

@@ -440,7 +440,7 @@ namespace Server
 				{
 					// When already at or above the cap, apply bonuses at 50% rate
 					value += bonusObey * 0.5;
-
+				}
 				return value;
 			}
 		}

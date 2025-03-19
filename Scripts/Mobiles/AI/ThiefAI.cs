@@ -115,7 +115,8 @@ namespace Server.Mobiles
 								m_Mobile.Target.Invoke( m_Mobile, steal4 );
 						}
 
-						Item steal5 = cpack.FindItemByType( typeof ( Spellbook ) );
+						Item steal5 = null;
+						// Item steal5 = cpack.FindItemByType( typeof ( Spellbook ) );
 						if ( steal5 != null ) 
 						{
 							m_Mobile.DebugSay( "Trying to steal from combatant." );
@@ -124,7 +125,8 @@ namespace Server.Mobiles
 								m_Mobile.Target.Invoke( m_Mobile, steal5 );
 						}
 
-						Item steal6 = cpack.FindItemByType( typeof ( Runebook ) );
+						Item steal6 = null;
+						// Item steal6 = cpack.FindItemByType( typeof ( Runebook ) );
 						if ( steal6 != null ) 
 						{
 							m_Mobile.DebugSay( "Trying to steal from combatant." );
@@ -151,7 +153,8 @@ namespace Server.Mobiles
 								m_Mobile.Target.Invoke( m_Mobile, steal8 );
 						}
 
-						Item steal9 = cpack.FindItemByType( typeof ( BaseMagicStaff ) );
+						Item steal9 = null;
+						// Item steal9 = cpack.FindItemByType( typeof ( BaseMagicStaff ) );
 						if ( steal9 != null ) 
 						{
 							m_Mobile.DebugSay( "Trying to steal from combatant." );

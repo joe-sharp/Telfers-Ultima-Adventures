@@ -19,7 +19,7 @@ namespace Server.Mobiles
 		public override int BreathEnergyDamage{ get{ return 24; } }
 		public override int BreathEffectHue{ get{ return 0xA50; } }
 		public override double BreathEffectDelay{ get{ return 0.1; } }
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 1 ); }
 
 		[Constructable]

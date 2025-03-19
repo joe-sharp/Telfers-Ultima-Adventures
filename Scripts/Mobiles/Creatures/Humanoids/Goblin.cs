@@ -48,7 +48,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Poor );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int Meat{ get{ return 1; } }
 		public override int GetAttackSound(){ return 0x5FD; }	// A
 		public override int GetDeathSound(){ return 0x5FE; }	// D

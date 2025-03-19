@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	[CorpseName( "a wolf corpse" )]
 	public class WinterWolf : BaseMount
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override int BreathPhysicalDamage{ get{ return 0; } }
 		public override int BreathFireDamage{ get{ return 0; } }
 		public override int BreathColdDamage{ get{ return 100; } }

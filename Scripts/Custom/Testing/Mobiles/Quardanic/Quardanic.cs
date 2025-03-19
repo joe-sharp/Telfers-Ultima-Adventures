@@ -73,7 +73,7 @@ namespace Server.Mobiles
 		 }}
 
                             }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
         public override bool BardImmune{ get{ return true; } }
         public override Poison HitPoison{ get{ return Poison.Lethal; } }
         public override Poison PoisonImmune{ get{ return Poison.Lethal; } }

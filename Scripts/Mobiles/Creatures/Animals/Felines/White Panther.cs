@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	[CorpseName( "a feline corpse" )]
 	public class WhitePanther : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 			public override int BreathPhysicalDamage{ get{ return 20; } }
 			public override int BreathFireDamage{ get{ return 20; } }
 			public override int BreathColdDamage{ get{ return 20; } }

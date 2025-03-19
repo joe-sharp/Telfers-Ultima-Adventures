@@ -53,6 +53,9 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			// Prevent this as copper is useful for harvesters
+			return;
+
 			BankBox box = from.FindBankNoCreate();
 
 			if ( box != null && IsChildOf( box ) )
@@ -164,6 +167,9 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			// Prevent this as silver is useful for harvesters
+			return;
+
 			BankBox box = from.FindBankNoCreate();
 
 			if ( box != null && IsChildOf( box ) )

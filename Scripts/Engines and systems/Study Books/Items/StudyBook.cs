@@ -13,10 +13,10 @@ namespace Server.Items
     {
 		//Remember: 1 SkillGainedPerTick below would translate to a 0.1 skill increase!
 		private static readonly int SkillGainInterval = 10;//This is the number of minutes that pass before a skill gain happens while studying.
-		private static readonly int SkillGainedPerTick = 1;//This is the skill gain for each gain interval that has passed.
-		private static readonly int SkillGainMax = 200;//This is the maximum gain that can be achieved from one study session.
-		private static readonly int HoursTilAcceleratedSkillGain = 5;//This is the amount of study hours required to gain a Scroll of Alacrity effect.
-		private static readonly TimeSpan AcceleratedSkillGainTime = TimeSpan.FromMinutes(30.0);//This is the duration of the accellerated skill gain.
+		private static readonly int SkillGainedPerTick = 10;//This is the skill gain for each gain interval that has passed.
+		private static readonly int SkillGainMax = 1200;//This is the maximum gain that can be achieved from one study session.
+		private static readonly int HoursTilAcceleratedSkillGain = 7;//This is the amount of study hours required to gain a Scroll of Alacrity effect.
+		private static readonly TimeSpan AcceleratedSkillGainTime = TimeSpan.FromMinutes(120.0);//This is the duration of the accellerated skill gain.
 		private static readonly bool AllowSkillAcceleration = true;//Set this to false if you don't want your players to receive accellerated skill gain.
 		private SkillName _TrainingSkill;
 		private int _MaxSkillTrained;
@@ -103,14 +103,6 @@ namespace Server.Items
 			
 			if (from.Skills[this._TrainingSkill].BaseFixedPoint + toGain > this._MaxSkillTrained)
 				toGain = this._MaxSkillTrained - from.Skills[this._TrainingSkill].BaseFixedPoint;//Cannot gain above the max for your study book.
-			//Skills gained in excess of 100 are gained at half-rate. To disable this, comment out below.
-			if (from.Skills[_TrainingSkill].BaseFixedPoint + toGain > 1000)
-			{
-				if (from.Skills[this._TrainingSkill].BaseFixedPoint <= 1000)
-					toGain -= (int)((toGain - (1000 - from.Skills[this._TrainingSkill].BaseFixedPoint)) / 2);//only reduces amount gained over 100
-				else
-					toGain /= 2; //Divides any remaining skill gains by 2 before proceeding
-			}
 
 			//from.SendMessage(0, "Debug: toGain is " + toGain);
 
@@ -150,8 +142,8 @@ namespace Server.Items
 					if ( valueskill >= skill.Cap)
 						return;
 					
-					if (chance <= 0.01)
-						chance = 0.01;
+					if (chance <= 0.75)
+						chance = 0.75;
 					
 					bool success = ( chance >= Utility.RandomDouble() );
 

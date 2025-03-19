@@ -77,7 +77,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 2 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int TreasureMapLevel{ get{ return 5; } }
 
 		// TODO: Axe Throw

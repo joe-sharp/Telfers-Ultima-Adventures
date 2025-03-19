@@ -7,7 +7,7 @@ namespace Server.Mobiles
 	[CorpseName( "a bear corpse" )]
 	public class ElderPolarBearRiding : BaseMount
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override WeaponAbility GetWeaponAbility()
 		{
 			return WeaponAbility.BleedAttack;

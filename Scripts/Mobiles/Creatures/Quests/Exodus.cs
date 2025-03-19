@@ -83,7 +83,7 @@ namespace Server.Mobiles
 		}
 
 		public override bool AutoDispel{ get{ return true; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int TreasureMapLevel{ get{ return 6; } }
 		public override bool BardImmune { get { return true; } }

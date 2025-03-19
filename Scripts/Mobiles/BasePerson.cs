@@ -31,7 +31,7 @@ namespace Server.Mobiles
 		public override bool ClickTitle{ get{ return false; } }
 		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool AlwaysAttackable{ get{ return true; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override bool ReacquireOnMovement{ get{ return true; } }
 		public override bool DeleteCorpseOnDeath{ get{ return true; } }
 		public virtual bool IsInvulnerable { get { return false; } }

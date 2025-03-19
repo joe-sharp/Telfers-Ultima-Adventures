@@ -340,7 +340,7 @@ namespace Server.Items
 		public static void ApplyCurse(Mobile m, Map frommap, Map tomap, int type)
 		{
 
-			if ( !(m is PlayerMobile) || m == null )
+			if ( !(m is PlayerMobile) || m == null || m is PlayerMobile )
 				return;
 
 			if (((PlayerMobile)m).sbmaster)

@@ -110,7 +110,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.Poor );
 		}
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 
 		public override void OnThink()
 		{

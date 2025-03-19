@@ -52,7 +52,7 @@ namespace Server.Mobiles
 			m_Timer.Start();
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 
 		public override bool OnBeforeDeath()
 		{

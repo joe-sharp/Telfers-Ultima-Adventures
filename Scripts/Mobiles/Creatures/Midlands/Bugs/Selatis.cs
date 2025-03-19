@@ -7,7 +7,7 @@ namespace Server.Mobiles
 	[CorpseName( "a insectoid corpse" )]
 	public class Selatis : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public Selatis() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{

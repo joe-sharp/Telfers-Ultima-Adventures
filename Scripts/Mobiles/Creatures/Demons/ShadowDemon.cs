@@ -65,7 +65,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.MedScrolls, 1 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
 		public override int TreasureMapLevel{ get{ return 2; } }
 		public override bool BleedImmune{ get{ return true; } }

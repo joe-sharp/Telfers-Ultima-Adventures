@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	[TypeAlias( "Server.Mobiles.Hellcat" )]
 	public class HellCat : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		public override bool HasBreath{ get{ return true; } }
 		public override bool ReacquireOnMovement{ get{ return !Controlled; } }
 		public override double BreathEffectDelay{ get{ return 0.1; } }

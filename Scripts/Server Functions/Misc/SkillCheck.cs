@@ -952,7 +952,7 @@ namespace Server.Misc
 			}
 		}
 
-		private static double m_DefaultStatGainDelay = 15.0;
+		private static double m_DefaultStatGainDelay = 5.0;
 		private static TimeSpan m_StatGainDelay = TimeSpan.FromMinutes(m_DefaultStatGainDelay);
 		private static TimeSpan m_PetStatGainDelay = TimeSpan.FromMinutes( 5.0 );
 

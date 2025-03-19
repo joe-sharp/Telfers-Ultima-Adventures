@@ -41,31 +41,10 @@ namespace Server.Items
 			Weight = 10;
 			ItemID = Utility.RandomList( 0x02C1, 0x02C2, 0x02C3, 0x02C4 );
 
-			Visible = false;
+			Visible = true;
 		}
 
 		public override bool HandlesOnMovement{ get{ return true; } }
-
-		public override void OnMovement( Mobile m, Point3D oldLocation )
-		{
-
-
-			bool keep = false;
-			foreach ( Mobile search in this.GetMobilesInRange( 5 ) ) 
-			{
-					
-				if (search is PlayerMobile && ((PlayerMobile)search).SoulBound )
-					keep = true;
-					
-			}
-			if (!keep && this.Visible)
-				this.Visible = false;
-			else if (keep && !this.Visible)
-				this.Visible = true;
-			
-		}
-
-
 
 		public void DoBasementDoor( Mobile m )
 		{
@@ -96,16 +75,8 @@ namespace Server.Items
 		{
 			if (!(m is PlayerMobile))
 				return;
-			
-			PlayerMobile pm = (PlayerMobile)m;
-			if (!pm.SoulBound && m.AccessLevel == AccessLevel.Player)
-			{
-				m.SendMessage ("You really want to know what's in there...");
-				return;
-			}
 
-
-			if ( (Server.Items.BasementDoor.IsEnabled() && !Movable) || m.AccessLevel > AccessLevel.Player )
+			if ( Server.Items.BasementDoor.IsEnabled() && !Movable )
 			{
 				if ( m.InRange( this.GetWorldLocation(), 2 ) )
 				{

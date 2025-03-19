@@ -92,7 +92,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int TreasureMapLevel{ get{ return 1; } }
 		public override int Meat{ get{ return 2; } }
 

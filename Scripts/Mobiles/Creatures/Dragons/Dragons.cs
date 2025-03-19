@@ -50,7 +50,7 @@ namespace Server.Mobiles
 		public override HideType HideType{ get{ return HideType.Draconic; } }
 		public override int Scales{ get{ if ( rBody == 61 ){ return 3; } else { return 7; } } }
 		public override bool CanAngerOnTame { get { if ( rBody == 61 ){ return false; } else { return true; } } }
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 
 		public Dragons( Serial serial ) : base( serial )
 		{
@@ -195,7 +195,7 @@ namespace Server.Mobiles
 			if ( 1 == Utility.RandomMinMax( 1, 20 ) && rBlood == "rust" && m is PlayerMobile )
 			{
 				Container cont = m.Backpack;
-				Item iRuined = Server.Items.HiddenTrap.GetMyItem( m );
+				Item iRuined = null;
 
 				if ( iRuined != null )
 				{

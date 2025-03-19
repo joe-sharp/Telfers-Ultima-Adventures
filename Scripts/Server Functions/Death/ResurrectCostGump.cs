@@ -30,7 +30,8 @@ namespace Server.Gumps
 			}
 
 			m_Healer = healer;
-			m_Price = GetPlayerInfo.GetResurrectCost( owner );
+			// m_Price = GetPlayerInfo.GetResurrectCost( owner );
+			m_Price = 0;
 			m_Bank = Banker.GetBalance( owner );
 			m_ResurrectType = 0;
 

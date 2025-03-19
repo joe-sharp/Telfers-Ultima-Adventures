@@ -132,12 +132,15 @@ namespace Server.Mobiles
 
 		public override void OnGaveMeleeAttack( Mobile m )
 		{
+			// Nerf this
+			return;
+			
 			base.OnGaveMeleeAttack( m );
 
 			if ( 1 == Utility.RandomMinMax( 1, 20 ) )
 			{
 				Container cont = m.Backpack;
-				Item iStone = Server.Items.HiddenTrap.GetMyItem( m );
+				Item iStone = null;
 
 				if ( iStone != null )
 				{

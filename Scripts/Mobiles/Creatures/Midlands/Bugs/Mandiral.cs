@@ -7,7 +7,7 @@ namespace Server.Mobiles
 	[CorpseName( "a insectoid corpse" )]
 	public class Mandiral : BaseCreature
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public Mandiral() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{

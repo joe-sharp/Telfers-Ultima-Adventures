@@ -88,7 +88,7 @@ namespace Server.Mobiles
 
 		public override bool BleedImmune{ get{ return true; } }
 		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override Poison HitPoison{ get{ return Poison.Lesser; } }
 		public override int Hides{ get{ return 3; } }
 		public override HideType HideType{ get{ return HideType.Necrotic; } }

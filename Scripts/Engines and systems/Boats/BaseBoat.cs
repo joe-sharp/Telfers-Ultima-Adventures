@@ -42,7 +42,7 @@ namespace Server.Multis
 		private static Rectangle2D[] m_BottleWrap = new Rectangle2D[]{ new Rectangle2D( 6127+16, 828+16, 1040-32, 1915-32 ) };
 		private static Rectangle2D[] m_UmberWrap = new Rectangle2D[]{ new Rectangle2D( 699+16, 3129+16, 1573-32, 966-32 ) };
 
-		private static TimeSpan BoatDecayDelay = TimeSpan.FromDays( 30 );
+		private static TimeSpan BoatDecayDelay = TimeSpan.FromDays( 365 );
 
 		public static BaseBoat FindBoatAt( IPoint2D loc, Map map )
 		{

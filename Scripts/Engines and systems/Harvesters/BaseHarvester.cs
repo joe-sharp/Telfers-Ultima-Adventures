@@ -495,6 +495,13 @@ namespace Server.Items
                 dropped.Delete();
                 return true;
             }
+            if (m_type <= 3 && dropped is DDSilver)
+            {
+                this.copper += (int)((double)dropped.Amount * 9);
+                this.InvalidateProperties();
+                dropped.Delete();
+                return true;
+            }
             if (m_type == 4 && dropped is Apple)
             {
                 this.copper += (int)((double)dropped.Amount * 5);
@@ -585,6 +592,13 @@ namespace Server.Items
                 dropped.Delete();
                 return true;
             }
+            if (m_type <= 3 && dropped is DDSilver)
+            {
+                this.copper += (int)((double)dropped.Amount * 9);
+                this.InvalidateProperties();
+                dropped.Delete();
+                return true;
+            }
             if (m_type == 4 && dropped is Apple)
             {
                 this.copper += (int)((double)dropped.Amount * 100);
@@ -660,18 +674,18 @@ namespace Server.Items
 
                     for (int i = 0; i <= this.m_quality; i++)
                     {
-                        if (Utility.RandomDouble() < 0.60) // 
+                        if (Utility.RandomDouble() < 0.75) // Originally 0.60
                             chance += 1;
                     }
 
                     // map bonuses
-                    if (this.Map == Map.Felucca && Utility.RandomDouble() < 0.05)
+                    if (this.Map == Map.Felucca && Utility.RandomDouble() < 0.10) // Originally 0.05
                         chance += 1;
-                    if (this.Map == Map.Malas && Utility.RandomDouble() < 0.10)
+                    if (this.Map == Map.Malas && Utility.RandomDouble() < 0.20) // Originally 0.10
                         chance += 2;
-                    if (this.Map == Map.Tokuno && Utility.RandomDouble() < 0.10)
+                    if (this.Map == Map.Tokuno && Utility.RandomDouble() < 0.20) // Originally 0.10
                         chance += 2;
-                    if (this.Map == Map.Ilshenar && Utility.RandomDouble() < 0.07)
+                    if (this.Map == Map.Ilshenar && Utility.RandomDouble() < 0.14) // Originally 0.07
                         chance += 1;
 
                     if (this.m_type == 1) // mining
@@ -690,17 +704,17 @@ namespace Server.Items
                         {
                             switch (Utility.Random(chance))
                             {
-                                case 1: resource = new DullCopperOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 2: resource = new ShadowIronOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 3: resource = new CopperOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 4: resource = new BronzeOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 5: resource = new GoldOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 6: resource = new AgapiteOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 7: resource = new VeriteOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 8: resource = new ValoriteOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 9: resource = new ObsidianOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 10: resource = new MithrilOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 11: resource = new DwarvenOre(); resource.Amount = Utility.RandomMinMax(1, 3); break;
+                                case 1: resource = new DullCopperOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 2: resource = new ShadowIronOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 3: resource = new CopperOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 4: resource = new BronzeOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 5: resource = new GoldOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 6: resource = new AgapiteOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 7: resource = new VeriteOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 8: resource = new ValoriteOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 9: resource = new ObsidianOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 10: resource = new MithrilOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 11: resource = new DwarvenOre(); resource.Amount = Utility.RandomMinMax(1, 5); break;
                             }
                         }
                     }
@@ -715,23 +729,23 @@ namespace Server.Items
                         m_owner.CheckSkill(SkillName.Lumberjacking, 0, (m_quality * 10));
 
                         if (Utility.RandomDouble() < (1 - ((double)m_quality / 10)))
-                        { resource = new Log(); resource.Amount = Utility.RandomMinMax(1, 3); }
+                        { resource = new Log(); resource.Amount = Utility.RandomMinMax(1, 5); }
                         else
                         {
                             switch (Utility.Random(chance))
                             {
-                                case 0: resource = new AshLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 1: resource = new CherryLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 2: resource = new EbonyLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 3: resource = new GoldenOakLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 4: resource = new HickoryLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 5: resource = new MahoganyLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 6: resource = new OakLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 7: resource = new PineLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 8: resource = new RosewoodLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 9: resource = new WalnutLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 10: resource = new DriftwoodLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 11: resource = new ElvenLog(); resource.Amount = Utility.RandomMinMax(1, 3); break;
+                                case 0: resource = new AshLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 1: resource = new CherryLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 2: resource = new EbonyLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 3: resource = new GoldenOakLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 4: resource = new HickoryLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 5: resource = new MahoganyLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 6: resource = new OakLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 7: resource = new PineLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 8: resource = new RosewoodLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 9: resource = new WalnutLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 10: resource = new DriftwoodLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 11: resource = new ElvenLog(); resource.Amount = Utility.RandomMinMax(1, 5); break;
                             }
                         }
                     }
@@ -748,22 +762,22 @@ namespace Server.Items
                         m_owner.CheckSkill(SkillName.Forensics, 0, (m_quality * 10));
 
                         if (Utility.RandomDouble() < (1 - ((double)m_quality / 10)))
-                        { resource = new Hides(); resource.Amount = 1; }
+                        { resource = new Hides(); resource.Amount = Utility.RandomMinMax(1, 5); }
                         else
                         {
                             switch (Utility.Random(chance))
                             {
-                                case 0: resource = new SpinedHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 1: resource = new HornedHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 2: resource = new BarbedHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 3: resource = new NecroticHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 4: resource = new VolcanicHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 5: resource = new FrozenHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 6: resource = new GoliathHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 7: resource = new DraconicHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 8: resource = new HellishHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 9: resource = new DinosaurHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
-                                case 10: resource = new AlienHides(); resource.Amount = Utility.RandomMinMax(1, 3); break;
+                                case 0: resource = new SpinedHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 1: resource = new HornedHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 2: resource = new BarbedHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 3: resource = new NecroticHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 4: resource = new VolcanicHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 5: resource = new FrozenHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 6: resource = new GoliathHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 7: resource = new DraconicHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 8: resource = new HellishHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 9: resource = new DinosaurHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
+                                case 10: resource = new AlienHides(); resource.Amount = Utility.RandomMinMax(1, 5); break;
                             }
                         }
                     }

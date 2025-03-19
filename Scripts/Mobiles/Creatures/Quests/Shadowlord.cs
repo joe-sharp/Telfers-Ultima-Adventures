@@ -257,7 +257,7 @@ namespace Server.Mobiles
 			this.PlaySound( 0x1FE );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override int TreasureMapLevel{ get{ return 6; } }
 		public override bool BleedImmune{ get{ return true; } }
 		public override bool BardImmune { get { return true; } }

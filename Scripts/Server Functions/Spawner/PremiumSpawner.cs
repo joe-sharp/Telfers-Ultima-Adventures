@@ -1970,15 +1970,27 @@ namespace Server.Mobiles
 			m_Timer.Start();
 		}
 
+        // private static int ClampSpawns(List<IEntity> creatures, int amount)
+        // {
+		// 	BaseCreature firstCreature = creatures.FirstOrDefault(c => c is BaseCreature) as BaseCreature;
+		// 	bool hasBreathAttack = firstCreature != null && firstCreature.HasBreath;
+		// 	if (!hasBreathAttack) return amount; // Can still split
+
+		// 	const int Max_Breath_Attacker_Spawns = 3;
+		// 	return Max_Breath_Attacker_Spawns < creatures.Count 
+		// 		? Math.Min(amount, Max_Breath_Attacker_Spawns - creatures.Count) // Allow no more than +3 in this slot
+		// 		: 1; // Let it spawn the original
+        // }
+		
         private static int ClampSpawns(List<IEntity> creatures, int amount)
         {
 			BaseCreature firstCreature = creatures.FirstOrDefault(c => c is BaseCreature) as BaseCreature;
 			bool hasBreathAttack = firstCreature != null && firstCreature.HasBreath;
-			if (!hasBreathAttack) return amount; // Can still split
+			if (hasBreathAttack) return 1; // Can still split
 
-			const int Max_Breath_Attacker_Spawns = 3;
-			return Max_Breath_Attacker_Spawns < creatures.Count 
-				? Math.Min(amount, Max_Breath_Attacker_Spawns - creatures.Count) // Allow no more than +3 in this slot
+			const int Max_Normal_Spawns = 2;
+			return Max_Normal_Spawns < creatures.Count 
+				? Math.Min(amount, Max_Normal_Spawns - creatures.Count) // Allow no more than +2 in this slot
 				: 1; // Let it spawn the original
         }
 

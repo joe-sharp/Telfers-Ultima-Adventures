@@ -1269,8 +1269,9 @@ namespace Server.Items
 					}
 				}
 			}
-
-			return nSprung;
+			// Ensure no traps
+			// return nSprung;
+			return 0;
 		}
 
         private static Item TryGetDestroyableItem(Mobile m, Layer layer)

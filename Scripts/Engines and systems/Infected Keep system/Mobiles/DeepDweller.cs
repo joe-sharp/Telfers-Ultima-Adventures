@@ -18,7 +18,7 @@ namespace Server.Mobiles
 
 			AIFullSpeedActive = true;
 			AIFullSpeedPassive = false; // Force full speed
-			CanInfect = true;
+			CanInfect = false;
 
 			SetStr( 986, 1185 );
 			SetDex( 177, 255 );

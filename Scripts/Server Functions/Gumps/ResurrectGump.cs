@@ -128,40 +128,6 @@ namespace Server.Gumps
 
 		public ResurrectGump( Mobile owner, Mobile healer, int price ): base( 25, 25 )
 		{
-
-
-			if (healer is PlayerMobile && owner is PlayerMobile && ((PlayerMobile)owner).Avatar)
-			{
-				bool proceed = false;
-				PlayerMobile healed = (PlayerMobile)owner;
-				PlayerMobile hEaler = (PlayerMobile)healer;
-
-				if (hEaler.BalanceEffect <= -10)
-				{
-					proceed = true;
-					hEaler.BalanceEffect += 10;
-				}
-				else if (hEaler.BalanceEffect >= 10)
-				{
-					proceed = true;
-					hEaler.BalanceEffect -= 10;
-				}
-
-				if (proceed)
-				{
-					hEaler.SendMessage( "You sacrifice your influence on the balance to resurrect this adventurer." );
-					healed.SendMessage( "The other adventurer sacrifices some influence on the balance to bring you back to life." );
-				}
-				else
-				{
-					hEaler.SendMessage( "You have insufficient influence over the balance to sacrifice." );
-					healed.SendMessage( "The other adventurer does not have sufficient influence over the balance to help you." );
-					healed.CloseGump( typeof( ResurrectGump ) );
-					return;
-				}
-
-			}
-
 			m_Healer = healer;
 			m_Price = price;
 

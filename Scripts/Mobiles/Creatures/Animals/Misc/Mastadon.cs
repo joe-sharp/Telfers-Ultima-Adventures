@@ -10,7 +10,7 @@ namespace Server.Mobiles
 	[CorpseName( "a mastadon corpse" )]
 	public class Mastadon : Elephant
 	{
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 		[Constructable]
 		public Mastadon()
 		{

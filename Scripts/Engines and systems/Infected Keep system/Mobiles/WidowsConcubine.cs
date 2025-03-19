@@ -53,7 +53,7 @@ namespace Server.Mobiles
 			MaxAuraDamage = 45;
 			AuraRange = 3;
 			AuraPoison = Poison.Deadly;
-            CanInfect = true;
+            CanInfect = false;
 		}
 
 		public override void GenerateLoot()

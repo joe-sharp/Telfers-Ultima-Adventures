@@ -52,9 +52,10 @@ namespace Server.Mobiles
 
 	    SetHits(100, 250);
 
-	    SetDamage(30, 40);
+		// Nerf to shit
+		SetDamage(3, 4);
 
-	    SetDamageType(ResistanceType.Physical, 100);
+	    SetDamageType(ResistanceType.Physical, 1);
 		
 	    SetResistance(ResistanceType.Physical, 30, 50);
 	    SetResistance(ResistanceType.Fire, 40, 60);
@@ -62,16 +63,37 @@ namespace Server.Mobiles
 	    SetResistance(ResistanceType.Poison, 40, 60);
 	    SetResistance(ResistanceType.Energy, 40, 60);
 
-	    SetSkill(SkillName.Swords, 79.0, 110.0);
-	    SetSkill(SkillName.Tactics, 79.0, 110.0);
-	    SetSkill(SkillName.MagicResist, 79.0, 110.0);
-	    SetSkill(SkillName.Tactics, 79.0, 110.0);
-	    SetSkill(SkillName.Parry, 79.0, 110.0);
-	    SetSkill(SkillName.Anatomy, 70.0, 110.0);
-	    SetSkill(SkillName.Healing, 70.0, 110.0);
+	    SetSkill(SkillName.Swords, 7.0, 11.0);
+	    SetSkill(SkillName.Tactics, 7.0, 11.0);
+	    SetSkill(SkillName.MagicResist, 7.0, 11.0);
+	    SetSkill(SkillName.Tactics, 7.0, 11.0);
+	    SetSkill(SkillName.Parry, 7.0, 11.0);
+	    SetSkill(SkillName.Anatomy, 7.0, 11.0);
+	    SetSkill(SkillName.Healing, 7.0, 11.0);
 
-	    if (Utility.Random(1, 5) == 2) // 20% chance to have an OmniAI skill set
-		OmniAI.SetRandomSkillSet(this, 70.0, 110.0);
+		if (Utility.Random(1, 5) == 2) // 20% chance to have an OmniAI skill set
+		OmniAI.SetRandomSkillSet(this, 7.0, 11.0);
+
+	    // SetDamage(30, 40);
+
+	    // SetDamageType(ResistanceType.Physical, 100);
+		
+	    // SetResistance(ResistanceType.Physical, 30, 50);
+	    // SetResistance(ResistanceType.Fire, 40, 60);
+	    // SetResistance(ResistanceType.Cold, 40, 60);
+	    // SetResistance(ResistanceType.Poison, 40, 60);
+	    // SetResistance(ResistanceType.Energy, 40, 60);
+
+	    // SetSkill(SkillName.Swords, 79.0, 110.0);
+	    // SetSkill(SkillName.Tactics, 79.0, 110.0);
+	    // SetSkill(SkillName.MagicResist, 79.0, 110.0);
+	    // SetSkill(SkillName.Tactics, 79.0, 110.0);
+	    // SetSkill(SkillName.Parry, 79.0, 110.0);
+	    // SetSkill(SkillName.Anatomy, 70.0, 110.0);
+	    // SetSkill(SkillName.Healing, 70.0, 110.0);
+
+	    // if (Utility.Random(1, 5) == 2) // 20% chance to have an OmniAI skill set
+		// OmniAI.SetRandomSkillSet(this, 70.0, 110.0);
 
 	    Fame = 1000;
 	    Karma = -5000;
@@ -266,7 +288,8 @@ namespace Server.Mobiles
 	    AddLoot( LootPack.Average );
 	}
 
-	public override bool CanRummageCorpses{ get{ return true; } }
+	// Nerf
+	public override bool CanRummageCorpses{ get{ return false; } } // originally true
 	public override bool CanHeal { get { return true; } }
 
 	public override void OnDeath(Container c)

@@ -453,7 +453,7 @@ namespace Server.Items
 			get {
 					Mobile m = ParentEntity as Mobile;
 					if ( m != null && (m.Player || m is PlayerVendor) && m.Backpack == this ) {
-                        return 800; //increased from 550
+                        return 2000; //increased from 550
                     } else {
 						return base.DefaultMaxWeight;
 					}

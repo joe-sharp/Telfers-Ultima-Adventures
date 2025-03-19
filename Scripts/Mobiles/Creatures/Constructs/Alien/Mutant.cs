@@ -52,7 +52,7 @@ namespace Server.Mobiles
 		public override int Meat{ get{ return 4; } }
 		public override int Hides{ get{ return 18; } }
 		public override HideType HideType{ get{ return HideType.Necrotic; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 
 		public override void OnGotMeleeAttack( Mobile attacker )

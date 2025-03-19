@@ -266,17 +266,18 @@ namespace Server.Mobiles
 
 				}
 			}
-			if (this.Combatant != null && this is RedPlayer && InLOS( this.Combatant ) && (int)GetDistanceToSqrt( this.Combatant ) > 2 && (int)GetDistanceToSqrt( this.Combatant ) < 15 && !m_Threwpot)
-			{
-					ExplosionPotion m_Expot = (ExplosionPotion)this.Backpack.FindItemByType( typeof ( ExplosionPotion ) );
+			// Nerf
+			// if (this.Combatant != null && this is RedPlayer && InLOS( this.Combatant ) && (int)GetDistanceToSqrt( this.Combatant ) > 2 && (int)GetDistanceToSqrt( this.Combatant ) < 15 && !m_Threwpot)
+			// {
+			// 		ExplosionPotion m_Expot = (ExplosionPotion)this.Backpack.FindItemByType( typeof ( ExplosionPotion ) );
 
-					if ( m_Expot != null && m_potTimer == null )
-					{
-						this.Frozen = true;
-						m_Threwpot = true;
-						Timer.DelayCall( TimeSpan.FromSeconds( 1 ), new TimerStateCallback ( Throwpot ), new object[]{ this } );
-					}
-			}
+			// 		if ( m_Expot != null && m_potTimer == null )
+			// 		{
+			// 			this.Frozen = true;
+			// 			m_Threwpot = true;
+			// 			Timer.DelayCall( TimeSpan.FromSeconds( 1 ), new TimerStateCallback ( Throwpot ), new object[]{ this } );
+			// 		}
+			// }
 			
 		}
 
@@ -399,6 +400,8 @@ namespace Server.Mobiles
 		private Timer m_potTimer;		
 		public void Throwpot( object state )
 		{
+			// Nerf
+			return;
 			m_Threwpot = false;
 
 			if (this.Deleted || this == null )

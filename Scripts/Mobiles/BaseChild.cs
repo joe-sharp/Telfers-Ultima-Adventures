@@ -320,7 +320,7 @@ namespace Server.Mobiles
 			Item stolen = null;
 			bool caught = false;
 
-			if ( target is PlayerMobile && InRange( target, 1 ) && InLOS( target ) )
+			if ( false )
 			{
 
 				if ( this.Skills[SkillName.Stealing].Value >= Utility.RandomMinMax( 1, 125 ) && this.Skills[SkillName.Snooping].Value >= Utility.RandomMinMax( 1, 100 ) && this.Skills[SkillName.Stealing].Value >= Utility.RandomMinMax( 1, (int)target.Skills[SkillName.Stealing].Value ))

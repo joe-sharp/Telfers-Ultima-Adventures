@@ -52,7 +52,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average, 2 );
 		}
 		
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override Poison HitPoison{ get{ return Poison.Regular; } }
 		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
 		

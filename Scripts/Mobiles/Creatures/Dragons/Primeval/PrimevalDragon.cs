@@ -12,7 +12,7 @@ namespace Server.Mobiles
 		public override bool HasBreath{ get{ return true; } }
 		public override double BreathEffectDelay{ get{ return 0.1; } }
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 9 ); }
-		public override bool CanChew { get{return true;}}
+		public override bool CanChew { get{return false;}}
 
 		[Constructable]
 		public PrimevalDragon () : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )

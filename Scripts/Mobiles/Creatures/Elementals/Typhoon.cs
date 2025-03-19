@@ -82,7 +82,7 @@ namespace Server.Mobiles
 			if ( 1 == Utility.RandomMinMax( 1, 20 ) )
 			{
 				Container cont = m.Backpack;
-				Item iSucked = Server.Items.HiddenTrap.GetMyItem( m );
+				Item iSucked = null;
 
 				if ( iSucked != null )
 				{

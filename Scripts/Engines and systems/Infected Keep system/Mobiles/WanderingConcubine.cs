@@ -56,7 +56,7 @@ namespace Server.Mobiles
 			MaxAuraDamage = 25;
 			AuraRange = 3;
 			AuraPoison = Poison.Deadly;
-            CanInfect = true;
+            CanInfect = false;
 
 			RangePerception = 50;
 			RangeFight = 50;

@@ -1130,9 +1130,9 @@ namespace Server.Mobiles
 		public override int MaxWeight { get
 		{
 			if (AdventuresFunctions.IsPuritain((object)this))
-				return (((Core.ML && this.Race == Race.Human) ? 80 : 40) + (int)(3 * this.Str));
+				return (((Core.ML && this.Race == Race.Human) ? 80 : 40) + (int)(6 * this.Str));
 
-			return (((Core.ML && this.Race == Race.Human) ? 100 : 40) + (int)(4 * this.Str)); } }
+			return (((Core.ML && this.Race == Race.Human) ? 100 : 40) + (int)(6 * this.Str)); } }
 
 		private int m_LastGlobalLight = -1, m_LastPersonalLight = -1;
 
@@ -3845,19 +3845,19 @@ A little mouse catches sight of you and flees into a small hole in the ground.*/
             }
 
             //Zombiex and canchew
-            if (FindMostRecentDamager(true) is BaseCreature && !this.SoulBound )
-            {
-				BaseCreature mo = (BaseCreature)FindMostRecentDamager(true);
+            // if (FindMostRecentDamager(true) is BaseCreature && !this.SoulBound )
+            // {
+			// 	BaseCreature mo = (BaseCreature)FindMostRecentDamager(true);
 
-				if ( mo.CanChew )
-					ChewItem( mo );
+			// 	if ( mo.CanChew )
+			// 		ChewItem( mo );
 
-				if (mo is Zombiex || mo.CanInfect || mo is WanderingConcubine && (Str + Dex + Int) > 125 )
-				{
-					Zombiex zomb = new Zombiex();
-					zomb.NewZombie(this);
-				}
-            }
+			// 	if (mo is Zombiex || mo.CanInfect || mo is WanderingConcubine && (Str + Dex + Int) > 125 )
+			// 	{
+			// 		Zombiex zomb = new Zombiex();
+			// 		zomb.NewZombie(this);
+			// 	}
+            // }
             //Zombiex end
 
             else if (FindMostRecentDamager(true) is PlayerMobile )
@@ -4092,22 +4092,22 @@ A little mouse catches sight of you and flees into a small hole in the ground.*/
 			if ( GetFlag( PlayerFlag.WellRested ) )
 				SetFlag( PlayerFlag.WellRested, false );
 
-			if( c.Items.Count > 0 ) //player died, chance of losing durability for their items
-			{
-				List<Item> list = new List<Item>( c.Items );
-				bool reduced = false;
-				foreach (Item thing in list)
-				{
-					if ((thing is BaseClothing || thing is BaseWeapon || thing is BaseArmor || thing is BaseJewel) && Utility.RandomBool() )
-					{
-						if (!reduced)
-							reduced = true;
-						BaseWeapon.DamageItem(thing, this, 4);
-					}
-				}
-				if (reduced)
-					SendMessage("Your demise damaged your items!");
-			}
+			// if( c.Items.Count > 0 ) //player died, chance of losing durability for their items
+			// {
+			// 	List<Item> list = new List<Item>( c.Items );
+			// 	bool reduced = false;
+			// 	foreach (Item thing in list)
+			// 	{
+			// 		if ((thing is BaseClothing || thing is BaseWeapon || thing is BaseArmor || thing is BaseJewel) && Utility.RandomBool() )
+			// 		{
+			// 			if (!reduced)
+			// 				reduced = true;
+			// 			BaseWeapon.DamageItem(thing, this, 4);
+			// 		}
+			// 	}
+			// 	if (reduced)
+			// 		SendMessage("Your demise damaged your items!");
+			// }
 
 			Send(SpeedControl.MountSpeed);
 		}

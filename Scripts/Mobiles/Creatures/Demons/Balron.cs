@@ -51,7 +51,7 @@ namespace Server.Mobiles
 		public override int Meat{ get{ return 3; } }
 		public override int Hides{ get{ return 22; } }
 		public override HideType HideType{ get{ return HideType.Hellish; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 
 		public Balron( Serial serial ) : base( serial )
 		{
@@ -236,7 +236,7 @@ namespace Server.Mobiles
 			if ( 1 == Utility.RandomMinMax( 1, 20 ) && rBlood == "rust" && m is PlayerMobile )
 			{
 				Container cont = m.Backpack;
-				Item iRuined = Server.Items.HiddenTrap.GetMyItem( m );
+				Item iRuined = null;
 
 				if ( iRuined != null )
 				{

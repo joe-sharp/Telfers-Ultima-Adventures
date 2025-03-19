@@ -61,7 +61,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 
 		private DateTime m_NextBomb;
 		private int m_Thrown;

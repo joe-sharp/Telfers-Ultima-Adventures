@@ -74,7 +74,7 @@ namespace Server.Mobiles
 				}
 		}
 		
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses{ get{ return false; } }
 		public override bool BardImmune{ get{ return true; } }
 		public override bool Unprovokable{ get{ return true; } }
 		public override bool Uncalmable{ get{ return true; } }

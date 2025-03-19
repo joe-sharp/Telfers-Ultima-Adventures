@@ -31,8 +31,10 @@ namespace Server.Misc
 			PackItem( new LoreGuidetoAdventure() );
 			PackItem( new Dagger() ); // WIZARD
 			PackItem( new Gold( 5000 ) );
-			PackItem( new BreadLoaf( 2 ) );
-			PackItem( new Waterskin() );
+			PackItem( new EverlastingBottle() ); // Telfer Added
+			PackItem( new EverlastingLoaf() ); // Telfer Added
+			// PackItem( new BreadLoaf( 2 ) );
+			// PackItem( new Waterskin() );
 			PackItem( new Torch() );
 			PackItem( new StandardRandomStudyBook() );
 			PackItem( new StandardRandomStudyBook() );

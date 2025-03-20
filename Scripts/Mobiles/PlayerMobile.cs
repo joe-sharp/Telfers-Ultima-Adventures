@@ -3482,7 +3482,7 @@ A little mouse catches sight of you and flees into a small hole in the ground.*/
 			if ( Server.Misc.MyServerSettings.NoMountsInCertainRegions() && Server.Mobiles.AnimalTrainer.IsNoMountRegion(Region.Find( this.Location, this.Map ) ) )
 			{
 				mountAble = false;
-				speedAble = false;
+				speedAble = true;
 			}
 
 			if ( Server.Mobiles.AnimalTrainer.IsBeingFast( this ) && !mountAble )

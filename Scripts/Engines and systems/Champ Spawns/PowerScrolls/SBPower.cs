@@ -20,7 +20,7 @@ namespace Server.Mobiles
 
 		public class InternalBuyInfo : List<GenericBuyInfo> 
 		{
-            private double baseprice = 5000000;
+            private double baseprice = 2500000;
             private double multiple = 1;
 
             public InternalBuyInfo() 
@@ -134,12 +134,13 @@ namespace Server.Mobiles
 				if ( MyServerSettings.BuyRareChance() ){Add( typeof( DJ_SP_Tracking ), 115000  );}
 				if ( MyServerSettings.BuyChance() ) {Add( typeof( DJ_SP_Veterinary ), 250000  );}
 				if ( MyServerSettings.BuyChance() ) {Add( typeof( DJ_SP_Wrestling ), 250000  );}
-				// if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_Begging ), 0000 );}
-				// if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_Camping ), 0000 );}
-				// if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_Forensics ), 0000 );}
-				// if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_Herding ), 0000 );}
-				// if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_TasteID ), 0000 );}
-				// if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_ItemID ), 0000 );}
+				// Originally Disabled, set to basic buy and 0000 gold
+				if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_Begging ), 250000 );}
+				if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_Camping ), 250000 );}
+				if ( MyServerSettings.BuyRareChance() ){Add( typeof( DJ_SP_Forensics ), 250000 );}
+				if ( MyServerSettings.BuyVeryRareChance() ){Add( typeof( DJ_SP_Herding ), 370000 );}
+				if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_TasteID ), 480000 );}
+				if ( MyServerSettings.BuyChance() ){Add( typeof( DJ_SP_ItemID ), 480000 );}
 			} 
 		} 
 	} 

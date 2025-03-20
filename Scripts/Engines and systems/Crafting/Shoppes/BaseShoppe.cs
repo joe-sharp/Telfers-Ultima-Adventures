@@ -469,9 +469,9 @@ namespace Server.Items
 				if ( m_Timer != null )
 					m_Timer.Stop();
 
-					TimeSpan delay = TimeSpan.FromHours(Utility.RandomMinMax(2, 4));
+					TimeSpan delay = TimeSpan.FromMinutes(Utility.RandomMinMax(30, 60));
 					if (GetDelay())
-						delay = TimeSpan.FromMinutes(Utility.RandomMinMax(20, 40));
+						delay = TimeSpan.FromMinutes(Utility.RandomMinMax(5, 10));
 
 					m_Timer = new CustomerTimer( this, delay ); 
 				

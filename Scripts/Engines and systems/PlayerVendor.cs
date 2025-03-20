@@ -305,9 +305,9 @@ namespace Server.Mobiles
 		private static bool EnableSpeech = true; // if enabled, this NPC will respond to certain keywords when talked to
 
 		// how often and how rigorously to perform a sales check
-		private static int MaxIterationsPerCheck = 8; // was originally set to 10
+		private static int MaxIterationsPerCheck = 10; // was originally set to 8
 		private static int MinCheckPeriodInMinutes = 15;
-		private static int MaxCheckPeriodInMinutes = 75;
+		private static int MaxCheckPeriodInMinutes = 30;
 
 		private static double AdPeriodInSeconds = 55.0; // how often to advertise the sales
 		private static int NumRecentSalesToRemember = 50; // how many sales will be remembered and reported on "<NAME> report" or "<NAME> report N", where N is the number of sales
@@ -315,8 +315,8 @@ namespace Server.Mobiles
 		private static bool LowPriceBoost = false; // may make it easier to game the system on low sell price (1 gp) items
 		private static bool HarderBagSale = true; // if enabled, makes it harder to get a decent price on items sold en masse in bags
 		private static int BarterValue = 33;
-		private static int RichSuckerChance = 997;
-		private static int ImprovedPriceModChance = 97;
+		private static int RichSuckerChance = 950; // was originally set to 997
+		private static int ImprovedPriceModChance = 90; // was originally set to 97
 		private static int MaxImprovedPriceMod = 4;
 		private static int MinImprovedPriceMod = 2;
 		private static int MinAttrsMultiplier = 50; // %
@@ -349,7 +349,7 @@ namespace Server.Mobiles
 		private static int PriceCutOnMaxDurability5 = 5; // %
 		private static int PriceCutOnMaxDurability3 = 1; // %
 
-		private static int FinalPriceModifier = 24; // % - the final price after all bonuses will be modified to this percentage (e.g. the final price of 1000 will be set to 800 if the 80% modifier is applied); use this to fine tune the prices without affecting the overall balance above
+		private static int FinalPriceModifier = 75; // Orig 24 % - the final price after all bonuses will be modified to this percentage (e.g. the final price of 1000 will be set to 800 if the 80% modifier is applied); use this to fine tune the prices without affecting the overall balance above
 		
 		public PlayerVendor( Mobile owner, BaseHouse house )
 		{

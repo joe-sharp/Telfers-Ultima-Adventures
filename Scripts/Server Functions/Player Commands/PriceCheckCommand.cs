@@ -61,7 +61,7 @@ namespace Server.Commands
             private static int PriceCutOnMaxDurability10 = 25; // %
             private static int PriceCutOnMaxDurability5 = 5; // %
             private static int PriceCutOnMaxDurability3 = 1; // %
-            private static int FinalPriceModifier = 75; // % - the final price after all bonuses will be modified to this percentage (e.g. the final price of 1000 will be set to 800 if the 80% modifier is applied); use this to fine tune the prices without affecting the overall balance above
+            private static int FinalPriceModifier = 150; // % - the final price after all bonuses will be modified to this percentage (e.g. the final price of 1000 will be set to 800 if the 80% modifier is applied); use this to fine tune the prices without affecting the overall balance above
             private void SetupSBList(ref List<SBInfo> sbList)
             {
                 sbList.Clear();

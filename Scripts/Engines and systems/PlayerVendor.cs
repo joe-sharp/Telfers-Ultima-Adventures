@@ -330,8 +330,8 @@ namespace Server.Mobiles
 		private static int DistToAnnounceSales = 15;
 		private static int MinimalPriceMaxBoost = 4;
 		private static int SBListMaxRandom = 10;
-		private static int SBListMaxFixed = 10;
-		private static int PriceThresholdForAttributeCheck = 50000; // set to a low value (100-200) to only do this to cheap items
+		private static int SBListMaxFixed = 20;
+		private static int PriceThresholdForAttributeCheck = 50; // set to a low value (100-200) to only do this to cheap items
 		private static bool IncreasePriceBasedOnNumberOfProps = true; // if true, items with many beneficial props will sell for more money
 		private static int AttrsMod1Or2Props = 1; // price multiplier if the item has 1-2 beneficial props
 		private static int AttrsMod3Or4Props = 2;

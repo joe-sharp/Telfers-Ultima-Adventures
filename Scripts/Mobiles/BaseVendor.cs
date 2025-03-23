@@ -104,8 +104,8 @@ namespace Server.Mobiles
 		private ArrayList m_ArmorSellInfo = new ArrayList();
 		private ConcurrentDictionary<Type, int> m_PlayerSoldItems;
 		private readonly object m_PlayerSoldItemLock = new object();
-        const int MAX_BUY_AMOUNT = 100;
-		const int MAX_STACKABLE_BUY_AMOUNT = 300;
+        const int MAX_BUY_AMOUNT = 1000;
+		const int MAX_STACKABLE_BUY_AMOUNT = 3000;
 
         private DateTime m_LastRestock;
 

@@ -462,7 +462,7 @@ namespace Server.Items
 			if ( third == null )
 			{
 				if (itemthree)
-					from.SendMessage( "You need a Telescope in your pack to build this." );
+					from.SendMessage( "You need a Spyglass in your pack to build this." );
 				else
 					from.SendMessage( "You need Springs in your pack to build this." );
 				return false;

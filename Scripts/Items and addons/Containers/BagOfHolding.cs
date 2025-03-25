@@ -14,6 +14,7 @@ namespace Server.Items
 			Name = "bag of holding";
 			Hue = Server.Misc.RandomThings.GetRandomLeatherColor();
 		}
+		public override int DefaultMaxWeight{ get{ return 0; } }
 
         public override bool CanAdd( Mobile from, Item item )
 		{

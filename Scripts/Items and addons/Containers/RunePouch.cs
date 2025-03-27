@@ -12,14 +12,13 @@ namespace Server.Items
 			Weight = 1.0;
 			MaxItems = 100;
 			Name = "rune rucksack";
-			Hue = 0x89F;
+			Hue = 0x883;
 		}
 
         public override bool CanAdd( Mobile from, Item item)
 		{
             if ( Server.Misc.MaterialInfo.IsReagent( item ) ||
 						item is Key ||
-						item is Pouch ||
 						item is RecallRune ||
 						item is Runebook ||
 						item is RunePouch )

@@ -10,7 +10,7 @@ namespace Server.Items
 		public RunePouch() : base()
 		{
 			Weight = 1.0;
-			MaxItems = 125;
+			MaxItems = 100;
 			Name = "rune rucksack";
 			Hue = 0x89F;
 		}
@@ -21,6 +21,7 @@ namespace Server.Items
 						item is Key ||
 						item is Pouch ||
 						item is RecallRune ||
+						item is Runebook ||
 						item is RunePouch )
 			{
 				return true;
@@ -35,11 +36,11 @@ namespace Server.Items
 
 			if ( dropped is Container )
 			{
-                from.SendMessage("You can only use another alchemy rucksack within this sack.");
+                from.SendMessage("You can only use another rune rucksack within this sack.");
 			}
 			else
 			{
-				from.SendMessage("This rucksack is for small alchemical crafting items.");
+				from.SendMessage("This rucksack is for runes and runebooks.");
 			}
 
 			return false;
@@ -51,11 +52,11 @@ namespace Server.Items
 
 			if ( dropped is Container)
 			{
-                from.SendMessage("You can only use another alchemy rucksack within this sack.");
+                from.SendMessage("You can only use another rune rucksack within this sack.");
 			}
 			else
 			{
-				from.SendMessage("This rucksack is for small alchemical crafting items.");
+				from.SendMessage("This rucksack is for runes and runebooks.");
 			}
 
 			return false;

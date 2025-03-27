@@ -78,7 +78,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			Weight = 1.0;
 			MaxItems = 50;
-			Name = "alchemy rucksack";
+			Name = "rune rucksack";
 		}
 
 		public override int GetTotal(TotalType type)

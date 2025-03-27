@@ -45,7 +45,7 @@ namespace Server.Items
         public override int ContainerMaxItems { get { return 5; } }
 
         // Setup access messages to provide a roleplaying experience
-        public override string AccessDelayMessage { get { return "The rift in the nether that separates the dimensions has that stabilized yet."; } }
+        public override string AccessDelayMessage { get { return "The rift in the nether that separates the dimensions hasn't stabilized yet."; } }
         public override string AddAccessMessage { get { return "You slip your hand through the nether to place an item into another dimension."; } }
         public override string RemoveAccessMessage { get { return "You slip your hand through the nether to retrieve an item from another dimension."; } }
 
@@ -256,14 +256,14 @@ namespace Server.Items
         public virtual double ContainerWeight { get { return 3.0; } }
         public virtual LootType ContainerLootType { get { return LootType.Regular; } }
         public virtual int ContainerHue { get { return Utility.RandomMetalHue(); } }
-        public virtual TimeSpan AccessDelay { get { return TimeSpan.FromMinutes(5.0); } }
+        public virtual TimeSpan AccessDelay { get { return TimeSpan.FromMinutes(0.5); } }
         public virtual string AccessDelayMessage { get { return "You cannot use that item yet"; } }
         public virtual string AddAccessMessage { get { return ""; } }
         public virtual string RemoveAccessMessage { get { return ""; } }
 
         public new int MaxItems { get { return ContainerMaxItems; } set { base.MaxItems = ContainerMaxItems; } }
         public override int DefaultMaxItems { get { return ContainerMaxItems; } }
-        public override int MaxWeight { get { return WeightReductionAmount == 1.0 ? 0 : 400; } }
+        public override int MaxWeight { get { return WeightReductionAmount == 1.0 ? 0 : 800; } }
 
         private DateTime NextAccessTime = DateTime.UtcNow;
 

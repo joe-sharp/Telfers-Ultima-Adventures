@@ -180,7 +180,7 @@ namespace Server.Items
 			if ( !base.OnDragDrop( from, dropped ) )
 				return false;
 
-			from.SendMessage( "The item will be picked up in about a day" );
+			from.SendMessage( "The item will be picked up in about an hour" );
 			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( dropped, dropped.Amount ).ToString() + " gold");
 
 			if ( m_Timer != null )
@@ -209,7 +209,7 @@ namespace Server.Items
 			if ( !base.OnDragDropInto( from, item, p ) )
 				return false;
 
-			from.SendMessage( "The item will be picked up in about a day" );
+			from.SendMessage( "The item will be picked up in about an hour" );
 			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( item, item.Amount ).ToString() + " gold");
 
 			if ( m_Timer != null )
@@ -275,7 +275,7 @@ namespace Server.Items
 		{
 			private MerchantCrate m_Crate;
 
-			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromHours( 2.0 ) )
+			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromHours( 1.0 ) )
 			{
 				m_Crate = crate;
 				Priority = TimerPriority.FiveSeconds;
@@ -322,8 +322,8 @@ namespace Server.Items
 				if ( price < 1 )
 					price = 1;
 
-				if ( armor.PlayerConstructed == false )
-					price = 0;
+				if ( armor.PlayerConstructed == true )
+					price += price;
 			}
 			else if ( item is BaseWeapon ) {
 				BaseWeapon weapon = (BaseWeapon)item;
@@ -342,8 +342,8 @@ namespace Server.Items
 				if ( price < 1 )
 					price = 1;
 
-				if ( weapon.PlayerConstructed == false )
-					price = 0;
+				if ( weapon.PlayerConstructed == true )
+					price += price;
 			}
 			else if ( item is BaseInstrument ) {
 				BaseInstrument lute = (BaseInstrument)item;
@@ -359,22 +359,27 @@ namespace Server.Items
 					price = 1;
 
 				if ( lute.UsesRemaining < 300 )
-					price = 0;
+					price += price;
 
-				if ( lute.Crafter == null )
-					price = 0;
+				if ( lute.Crafter != null )
+					price += price;
 			}
 			else if ( item is BaseClothing ) {
 				BaseClothing cloth = (BaseClothing)item;
 
-				if ( cloth.PlayerConstructed == false )
-					price = 0;
+				if ( cloth.PlayerConstructed == true )
+					price += price;
 			}
 			else if ( item is BaseTool ) {
 				BaseTool tool = (BaseTool)item;
+				double percentage = 1.0;
 
 				if ( tool.UsesRemaining < 50 )
-					price = 0;
+				{
+					// Scale linearly
+					percentage = (double)(2.0 + (tool.UsesRemaining - 1) * 0.98) / 50.0;
+				}
+				price = (int)(price * percentage);
 			}
 
 			return price;

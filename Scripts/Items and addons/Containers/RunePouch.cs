@@ -77,7 +77,7 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 			Weight = 1.0;
-			MaxItems = 50;
+			MaxItems = 100;
 			Name = "rune rucksack";
 		}
 

@@ -100,9 +100,11 @@ namespace Server.Items
 			{
 				case TotalType.Items:
 					base.UpdateTotal(sender, type, 0);
+					break;
 
 				case TotalType.Weight:
 					base.UpdateTotal(sender, type, 0);
+					break;
 			}
 
 			base.UpdateTotal( sender, type, delta );

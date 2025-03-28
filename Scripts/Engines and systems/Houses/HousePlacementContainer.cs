@@ -750,7 +750,7 @@ namespace Server.Items
 							//Item contract = from.Backpack.FindItemByType( typeof( HousePlacementContainer ) );
 							//if ( contract.Hue == 1 ){ contract.Hue = 0x497; }
 							//prev.Hue = contract.Hue;
-							prev.Hue = hue
+							prev.Hue = hue;
 						}
 
 						MultiComponentList mcl = prev.Components;

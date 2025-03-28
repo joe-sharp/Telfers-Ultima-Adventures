@@ -667,6 +667,7 @@ namespace Server.Items
 							}
 						}
 
+						house.Hue = prevHouse.Hue;
 						house.MoveToWorld( center, from.Map );
 
 						for ( int i = 0; i < toMove.Count; ++i )

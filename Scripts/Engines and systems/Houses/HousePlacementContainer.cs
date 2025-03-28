@@ -184,7 +184,7 @@ namespace Server.Items
 			int budget = g_HaveWood + (g_HaveNails*5) + (g_HaveStone *100);
 
 			if ( g_HaveWood > 500 && (g_HaveWood + (g_HaveNails*5) + (g_HaveStone *100)) > 2500 )
-				from.SendGump( new HousePlacementCategoryGump( from, budget ) );
+				from.SendGump( new HousePlacementCategoryGump( from, budget, this.Hue ) );
 
 		}
 
@@ -299,10 +299,12 @@ namespace Server.Items
 		private const int LabelColorDisabled = 0x4210;
 
 		private int m_budget;
+		private int m_Hue;
 
-		public HousePlacementCategoryGump( Mobile from, int budget ) : base( 50, 50 )
+		public HousePlacementCategoryGump( Mobile from, int budget, int hue ) : base( 50, 50 )
 		{
 			m_budget = budget;
+			m_Hue = hue;
 			m_From = from;
 
 			from.CloseGump( typeof( HousePlacementCategoryGump ) );
@@ -339,17 +341,17 @@ namespace Server.Items
 			{
 				case 1: // Classic Houses
 				{
-					m_From.SendGump( new HousePlacementListGump( m_From, HousePlacementEntry.ClassicHouses, m_budget ) );
+					m_From.SendGump( new HousePlacementListGump( m_From, HousePlacementEntry.ClassicHouses, m_budget, m_Hue ) );
 					break;
 				}
 				case 2: // 2-Story Customizable Houses
 				{
-					m_From.SendGump( new HousePlacementListGump( m_From, HousePlacementEntry.TwoStoryFoundations, m_budget ) );
+					m_From.SendGump( new HousePlacementListGump( m_From, HousePlacementEntry.TwoStoryFoundations, m_budget, m_Hue ) );
 					break;
 				}
 				case 3: // 3-Story Customizable Houses
 				{
-					m_From.SendGump( new HousePlacementListGump( m_From, HousePlacementEntry.ThreeStoryFoundations, m_budget ) );
+					m_From.SendGump( new HousePlacementListGump( m_From, HousePlacementEntry.ThreeStoryFoundations, m_budget, m_Hue ) );
 					break;
 				}
 			}
@@ -365,12 +367,14 @@ namespace Server.Items
 		private const int LabelHue = 0x480;
 
 		private int m_budget;
+		private int m_Hue;
 
-		public HousePlacementListGump( Mobile from, HousePlacementEntry[] entries, int budget ) : base( 50, 50 )
+		public HousePlacementListGump( Mobile from, HousePlacementEntry[] entries, int budget, int hue ) : base( 50, 50 )
 		{
 			m_From = from;
 			m_Entries = entries;
 			m_budget = budget;
+			m_Hue = hue;
 
 			from.CloseGump( typeof( HousePlacementCategoryGump ) );
 			from.CloseGump( typeof( HousePlacementListGump ) );
@@ -461,11 +465,11 @@ namespace Server.Items
 				//if ( m_From.AccessLevel < AccessLevel.GameMaster && BaseHouse.HasAccountHouse( m_From ) )
 				//	m_From.SendLocalizedMessage( 501271 ); // You already own a house, you may not place another!
 				else
-					m_From.Target = new NewHousePlacementTarget( m_Entries, m_Entries[index], m_budget );
+					m_From.Target = new NewHousePlacementTarget( m_Entries, m_Entries[index], m_budget, m_Hue );
 			}
 			else
 			{
-				m_From.SendGump( new HousePlacementCategoryGump( m_From, m_budget ) );
+				m_From.SendGump( new HousePlacementCategoryGump( m_From, m_budget, m_Hue ) );
 			}
 		}
 	}
@@ -478,13 +482,14 @@ namespace Server.Items
 		private bool m_Placed;
 		private int m_budget;
 
-		public NewHousePlacementTarget( HousePlacementEntry[] entries, HousePlacementEntry entry, int budget ) : base( entry.MultiID, entry.Offset )
+		public NewHousePlacementTarget( HousePlacementEntry[] entries, HousePlacementEntry entry, int budget, int hue ) : base( entry.MultiID, entry.Offset )
 		{
 			Range = 14;
 
 			m_Entries = entries;
 			m_Entry = entry;
 			m_budget = budget;
+			m_Hue = hue;
 
 		}
 
@@ -505,7 +510,7 @@ namespace Server.Items
 				Region reg = Region.Find( new Point3D( p ), from.Map );
 
 				if ( ( from.AccessLevel >= AccessLevel.GameMaster || reg.AllowHousing( from, p ) ) && !(reg.IsPartOf( typeof( ChampionSpawnRegion ) ) || reg is ChampionSpawnRegion) )
-					m_Placed = m_Entry.OnPlacement( from, p );
+					m_Placed = m_Entry.OnPlacement( from, p, m_Hue );
 				else
 					from.SendLocalizedMessage( 501265 ); // Housing can not be created in this area.
 			}

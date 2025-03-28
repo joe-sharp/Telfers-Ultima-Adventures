@@ -12,10 +12,10 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("pvpricecheck", AccessLevel.Player, new CommandEventHandler(PVPC_OnCommand));
+            CommandSystem.Register("pvpc", AccessLevel.Player, new CommandEventHandler(PVPC_OnCommand));
         }
 
-        [Usage("pvpricecheck")]
+        [Usage("pvpc")]
         [Description("Runs a Price Estimate on the targetted item")]
 
         public static void PVPC_OnCommand(CommandEventArgs e)

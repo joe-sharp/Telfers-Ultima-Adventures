@@ -481,6 +481,7 @@ namespace Server.Items
 
 		private bool m_Placed;
 		private int m_budget;
+		private int m_Hue;
 
 		public NewHousePlacementTarget( HousePlacementEntry[] entries, HousePlacementEntry entry, int budget, int hue ) : base( entry.MultiID, entry.Offset )
 		{
@@ -522,7 +523,7 @@ namespace Server.Items
 				return;
 
 			if ( !m_Placed )
-				from.SendGump( new HousePlacementListGump( from, m_Entries, m_budget ) );
+				from.SendGump( new HousePlacementListGump( from, m_Entries, m_budget, m_Hue ) );
 		}
 	}
 

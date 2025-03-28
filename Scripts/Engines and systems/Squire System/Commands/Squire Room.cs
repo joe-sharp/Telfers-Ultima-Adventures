@@ -20,7 +20,7 @@ namespace Server.Commands
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "SquireRoom", AccessLevel.GameMaster, new CommandEventHandler( SquireRoom_OnCommand ) );
+			CommandSystem.Register( "SquireRoom", AccessLevel.Player, new CommandEventHandler( SquireRoom_OnCommand ) );
 		}
 
 		[Usage( "SquireRoom" )]

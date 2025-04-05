@@ -2642,84 +2642,81 @@ namespace Server.Mobiles
 		    }
 
 
-		    private int PredictPrice( Item item )
-		    {
-			int price = 0;
-			List<SBInfo> sbList = new List<SBInfo>();
-			List<Item> items = new List<Item>();
+		    private int PredictPrice(Item item)
+            {
+                int price = 0;
+                List<SBInfo> sbList = new List<SBInfo>();
+                List<Item> items = new List<Item>();
 
-			SetupSBList(ref sbList);
+                SetupSBList(ref sbList);
 
-			items.Add(item);
-			if (item is Container)
-			{
-			    Container c = item as Container;
-			    foreach(Item it in c.Items)
-			    {
-				bool banned = it is BankCheck || it is Gold || it is DDCopper || it is DDSilver || it is DDJewels || it is DDXormite || it is DDGemstones || it is DDGoldNuggets;
+                items.Add(item);
+                if (item is Container)
+                {
+                    Container c = item as Container;
+                    foreach (Item it in c.Items)
+                    {
+                        bool banned = it is BankCheck || it is Gold || it is DDCopper || it is DDSilver || it is DDJewels || it is DDXormite || it is DDGemstones || it is DDGoldNuggets;
 
-				if (!banned)
-				    items.Add( it );
-			    }
-			}
+                        if (!banned)
+                            items.Add(it);
+                    }
+                }
 
-			int barterValue = Utility.Random(BarterValue);
-			int attrsMultiplier = Utility.RandomMinMax( MinAttrsMultiplier, MaxAttrsMultiplier );
-			bool isRichSucker = Utility.RandomMinMax( 0, 1000 ) > RichSuckerChance;
-			float modifier = (float)Utility.RandomMinMax( MinPriceModifier, MaxPriceModifier );
-			if (Utility.Random(100) > ImprovedPriceModChance && Utility.RandomBool())
-			    modifier *= Utility.RandomMinMax( MinImprovedPriceMod, MaxImprovedPriceMod ); // big luck, improved mod
+                int barterValue = Utility.Random(BarterValue);
+                int attrsMultiplier = Utility.RandomMinMax(MinAttrsMultiplier, MaxAttrsMultiplier);
+                bool isRichSucker = Utility.RandomMinMax(0, 1000) > RichSuckerChance;
+                float modifier = (float)Utility.RandomMinMax(MinPriceModifier, MaxPriceModifier);
+                if (Utility.Random(100) > ImprovedPriceModChance && Utility.RandomBool())
+                    modifier *= Utility.RandomMinMax(MinImprovedPriceMod, MaxImprovedPriceMod); // big luck, improved mod
 
-			foreach(Item ii in items)
-			{ 
-			    if (HarderBagSale)
-			    {
-				// reroll for each item in the bag, makes it progressively harder to get a decent price
-				// SetupSBList(ref sbList); // enable to make things even harder for bag sales
-				barterValue = Utility.Random(BarterValue);
-				attrsMultiplier = Utility.RandomMinMax( MinAttrsMultiplier, MaxAttrsMultiplier );
-				modifier = (float)Utility.RandomMinMax( MinPriceModifier, MaxPriceModifier );
-				if (Utility.Random(100) > ImprovedPriceModChance && Utility.RandomBool())
-				    modifier *= Utility.RandomMinMax( MinImprovedPriceMod, MaxImprovedPriceMod );
-			    }
+                foreach (Item ii in items)
+                {
+                    if (HarderBagSale)
+                    {
+                        // reroll for each item in the bag, makes it progressively harder to get a decent price
+                        // SetupSBList(ref sbList); // enable to make things even harder for bag sales
+                        barterValue = Utility.Random(BarterValue);
+                        attrsMultiplier = Utility.RandomMinMax(MinAttrsMultiplier, MaxAttrsMultiplier);
+                        modifier = (float)Utility.RandomMinMax(MinPriceModifier, MaxPriceModifier);
+                        if (Utility.Random(100) > ImprovedPriceModChance && Utility.RandomBool())
+                            modifier *= Utility.RandomMinMax(MinImprovedPriceMod, MaxImprovedPriceMod);
+                    }
 
-			    int itemPrice = 0;
-			    foreach(SBInfo priceInfo in sbList)
-			    {
-				int estimate = priceInfo.SellInfo.GetSellPriceFor(ii, barterValue);
-				if (itemPrice < estimate)
-				    itemPrice = estimate;
-			    }
+                    int itemPrice = 0;
+                    foreach (SBInfo priceInfo in sbList)
+                    {
+                        int estimate = priceInfo.SellInfo.GetSellPriceFor(ii, barterValue);
+                        if (itemPrice < estimate)
+                            itemPrice = estimate;
+                    }
 
-			    // ScalePriceOnDurability(ii, ref price);
+                    if (itemPrice < PriceThresholdForAttributeCheck)
+                    {
+                        int attrsMod = GetAttrsMod(ii);
+                        attrsMod *= (int)((float)attrsMultiplier / 100);
 
-			    // price += itemPrice;
+                        ScalePriceOnDurability(ii, ref attrsMod);
 
-			    if (itemPrice < PriceThresholdForAttributeCheck)
-			    {
-				int attrsMod = GetAttrsMod(ii);
-				attrsMod *= (int)((float)attrsMultiplier / 100);
+                        itemPrice += attrsMod;
+                    }
+                    ScalePriceOnDurability(ii, ref price);
 
-				ScalePriceOnDurability(ii, ref attrsMod);
+                    if (itemPrice == 1 && LowPriceBoost)
+                    {
+                        itemPrice = Utility.RandomMinMax( 1, MinimalPriceMaxBoost );
+                    }
+                    else if (itemPrice > RichSuckerMinPrice && isRichSucker)
+                    {
+                        itemPrice *= Utility.RandomMinMax( RichSuckerMinPriceMultiplier, RichSuckerMaxPriceMultiplier ); // rich sucker
+                    }
 
-				itemPrice += attrsMod;
-			    }
+                    itemPrice += (int)((float)itemPrice / modifier);
+                    price += itemPrice;
+                }
 
-			    if (itemPrice == 1 && LowPriceBoost)
-			    {
-				itemPrice = Utility.RandomMinMax( 1, MinimalPriceMaxBoost );
-			    }
-			    else if (itemPrice > RichSuckerMinPrice && isRichSucker)
-			    {
-				itemPrice *= Utility.RandomMinMax( RichSuckerMinPriceMultiplier, RichSuckerMaxPriceMultiplier ); // rich sucker
-			    }
-
-			    itemPrice += (int)((float)itemPrice / modifier);
-				price += itemPrice;
-			}
-
-			return price;
-		    }
+                return price;
+            }
 
 		    protected override void OnTick()
 		    {

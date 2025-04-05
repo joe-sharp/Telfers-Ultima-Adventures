@@ -987,30 +987,28 @@ namespace Server.Commands
                             itemPrice = estimate;
                     }
 
-                    ScalePriceOnDurability(ii, ref price);
-
-                    price += itemPrice;
-
-                    if (price < PriceThresholdForAttributeCheck)
+                    if (itemPrice < PriceThresholdForAttributeCheck)
                     {
                         int attrsMod = GetAttrsMod(ii);
                         attrsMod *= (int)((float)attrsMultiplier / 100);
 
                         ScalePriceOnDurability(ii, ref attrsMod);
 
-                        price += attrsMod;
+                        itemPrice += attrsMod;
                     }
+                    ScalePriceOnDurability(ii, ref price);
 
-                    if (price == 1 && LowPriceBoost)
+                    if (itemPrice == 1 && LowPriceBoost)
                     {
-                        price = Utility.RandomMinMax(1, MinimalPriceMaxBoost);
+                        itemPrice = Utility.RandomMinMax( 1, MinimalPriceMaxBoost );
                     }
-                    //else if (price > RichSuckerMinPrice && isRichSucker)
-                    //{
-                    //    price *= Utility.RandomMinMax(RichSuckerMinPriceMultiplier, RichSuckerMaxPriceMultiplier); // rich sucker
-                    //}
+                    else if (itemPrice > RichSuckerMinPrice && isRichSucker)
+                    {
+                        itemPrice *= Utility.RandomMinMax( RichSuckerMinPriceMultiplier, RichSuckerMaxPriceMultiplier ); // rich sucker
+                    }
 
-                    price += (int)((float)price / modifier);
+                    itemPrice += (int)((float)itemPrice / modifier);
+                    price += itemPrice;
                 }
 
                 return price;

@@ -46,10 +46,13 @@ namespace Server.Custom
 
 						if (bc.IsHitchStabled && bc.ControlMaster == null)
 						{
-							if (bc is Manchas && from.AllFollowers.Exists(f => f is Manchas))
+							if (from is PlayerMobile player)
 							{
-								from.SendMessage("Manchas refuses to share food with another Manchas.");
-								return;
+								if (bc is Manchas && player.AllFollowers.Exists(f => f is Manchas))
+								{
+									from.SendMessage("Manchas refuses to share food with another Manchas.");
+									return;
+								}
 							}
 
 							if (from.Followers + bc.ControlSlots <= from.FollowersMax)

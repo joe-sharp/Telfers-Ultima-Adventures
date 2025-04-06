@@ -53,14 +53,10 @@ namespace Server.Mobiles
 		{
 			if (m is PlayerMobile player)
 			{
-				// Check if the player already controls a Manchas
-				foreach (Mobile pet in player.AllFollowers)
+				if ( player.AllFollowers.Exists(f => f is Manchas) )
 				{
-					if (pet is Manchas)
-					{
-						player.SendMessage("Manchas refuses to share food with another Manchas.");
-						return false;
-					}
+					player.SendMessage("Manchas refuses to share food with another Manchas.");
+					return false;
 				}
 			}
 

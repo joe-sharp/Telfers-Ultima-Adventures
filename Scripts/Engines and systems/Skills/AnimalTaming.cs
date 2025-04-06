@@ -172,7 +172,6 @@ namespace Server.SkillHandlers
 								if ( player.AllFollowers.Exists(f => f is Manchas) )
 								{
 									player.SendMessage("Manchas refuses to share food with another Manchas.");
-									return false;
 								}
 							}
 						}

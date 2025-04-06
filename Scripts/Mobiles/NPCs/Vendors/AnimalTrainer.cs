@@ -758,6 +758,11 @@ namespace Server.Mobiles
 
 		public bool CanClaim( Mobile from, BaseCreature pet )
 		{
+			if (pet is Manchas && from.AllFollowers.Exists(f => f is Manchas))
+			{
+				from.SendMessage("Manchas refuses to share food with another Manchas.");
+				return false;
+			}
 			return ((from.Followers + pet.ControlSlots) <= from.FollowersMax);
 		}
 

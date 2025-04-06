@@ -164,6 +164,17 @@ namespace Server.SkillHandlers
 						{
 							creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1005615, from.NetState ); // This animal has had too many owners and is too upset for you to tame.
 						}
+						else if ( creature is Manchas )
+						{
+							foreach (Mobile pet in from.AllFollowers)
+							{
+								if (pet is Manchas)
+								{
+									from.SendMessage("Manchas refuses to share food with another Manchas.");
+									return;
+								}
+							}
+						}
 						else if ( MustBeSubdued( creature ) )
 						{
 							creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1054025, from.NetState ); // You must subdue this creature before you can tame it!

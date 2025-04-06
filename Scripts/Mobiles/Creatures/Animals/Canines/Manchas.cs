@@ -49,6 +49,24 @@ namespace Server.Mobiles
 		public override FoodType FavoriteFood{ get{ return FoodType.Meat; } }
 		public override PackInstinct PackInstinct{ get{ return PackInstinct.Canine; } }
 
+		public override bool CanBeControlledBy(Mobile m)
+		{
+			if (m is PlayerMobile player)
+			{
+				// Check if the player already controls a Manchas
+				foreach (Mobile pet in player.AllFollowers)
+				{
+					if (pet is Manchas)
+					{
+						player.SendMessage("Manchas refuses to share food with another Manchas.");
+						return false;
+					}
+				}
+			}
+
+			return base.CanBeControlledBy(m);
+		}
+
 		public Manchas(Serial serial) : base(serial)
 		{
 		}

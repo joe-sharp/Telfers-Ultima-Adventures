@@ -139,6 +139,7 @@ namespace Server.SkillHandlers
 					if ( targeted is BaseCreature )
 					{
 						BaseCreature creature = (BaseCreature)targeted;
+						PlayerMobile player = from as PlayerMobile;
 
 						if ( !creature.Tamable )
 						{
@@ -164,16 +165,9 @@ namespace Server.SkillHandlers
 						{
 							creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1005615, from.NetState ); // This animal has had too many owners and is too upset for you to tame.
 						}
-						else if ( creature is Manchas )
+						else if ( creature is Manchas && player != null && player.AllFollowers.Exists(f => f is Manchas) )
 						{
-							PlayerMobile player = from as PlayerMobile;
-							if (player != null)
-							{
-								if ( player.AllFollowers.Exists(f => f is Manchas) )
-								{
-									player.SendMessage("Manchas refuses to share food with another Manchas.");
-								}
-							}
+							from.SendMessage("Manchas refuses to share food with another Manchas.");
 						}
 						else if ( MustBeSubdued( creature ) )
 						{

@@ -6,6 +6,15 @@ namespace Server.Items
 	[Flipable( 0x1C10, 0x1CC6 )]
     public class RunePouch : LargeSack
     {
+		private int m_ContainedItems; // Attribute to track contained items.
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int ContainedItems
+		{
+			get { return m_ContainedItems; }
+			private set { m_ContainedItems = value; }
+		}
+
 		[Constructable]
 		public RunePouch() : base()
 		{
@@ -13,15 +22,15 @@ namespace Server.Items
 			MaxItems = 100;
 			Name = "rune rucksack";
 			Hue = 0x883;
+			m_ContainedItems = 0; // Initialize the count.
 		}
 
         public override bool CanAdd( Mobile from, Item item)
-		{
-            if ( Server.Misc.MaterialInfo.IsReagent( item ) ||
-						item is Key ||
-						item is RecallRune ||
-						item is Runebook ||
-						item is RunePouch )
+		 {
+			if (item is Key ||
+				item is RecallRune ||
+				item is Runebook ||
+				item is RunePouch )
 			{
 				return true;
 			}
@@ -82,32 +91,33 @@ namespace Server.Items
 
 		public override int GetTotal(TotalType type)
         {
-			switch ( type )
+			switch (type)
 			{
 				case TotalType.Items:
-					return 0;
+					return 0; // Always return 0 for TotalType.Items.
 
 				case TotalType.Weight:
 					return 0;
 			}
 
-			return base.GetTotal( type );
+			return base.GetTotal(type);
         }
 
 		public override void UpdateTotal(Item sender, TotalType type, int delta)
 		{
-			switch ( type )
+			switch (type)
 			{
 				case TotalType.Items:
-					base.UpdateTotal(sender, type, 0);
+					m_ContainedItems += delta; // Update the tracked count.
+					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;
 
 				case TotalType.Weight:
-					base.UpdateTotal(sender, type, 0);
+					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total weight.
 					break;
 			}
 
-			base.UpdateTotal( sender, type, delta );
+			base.UpdateTotal(sender, type, delta);
 		}
 	}
 }

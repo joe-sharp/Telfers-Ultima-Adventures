@@ -23,10 +23,16 @@ namespace Server.Items
 			Name = "rune rucksack";
 			Hue = 0x883;
 			m_ContainedItems = 0; // Initialize the count.
-		}
+			}
 
-        public override bool CanAdd( Mobile from, Item item)
-		 {
+		public override bool CanAdd(Mobile from, Item item)
+		{
+			if (m_ContainedItems >= MaxItems)
+			{
+				from.SendMessage("This rucksack cannot hold any more items.");
+				return false;
+			}
+
 			if (item is Key ||
 				item is RecallRune ||
 				item is Runebook ||
@@ -108,7 +114,7 @@ namespace Server.Items
 			switch (type)
 			{
 				case TotalType.Items:
-					m_ContainedItems += delta; // Update the tracked count.
+					m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + delta)); // Ensure within bounds.
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;
 

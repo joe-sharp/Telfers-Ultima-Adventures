@@ -51,7 +51,8 @@ namespace Server.Mobiles
 
 		public override bool CanBeControlledBy(Mobile m)
 		{
-			if (m is PlayerMobile player)
+			PlayerMobile player = m as PlayerMobile;
+			if (player != null)
 			{
 				if ( player.AllFollowers.Exists(f => f is Manchas) )
 				{

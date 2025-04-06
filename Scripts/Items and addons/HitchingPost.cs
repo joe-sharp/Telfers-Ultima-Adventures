@@ -46,7 +46,8 @@ namespace Server.Custom
 
 						if (bc.IsHitchStabled && bc.ControlMaster == null)
 						{
-							if (from is PlayerMobile player)
+							PlayerMobile player = from as PlayerMobile;
+							if (player != null)
 							{
 								if (bc is Manchas && player.AllFollowers.Exists(f => f is Manchas))
 								{

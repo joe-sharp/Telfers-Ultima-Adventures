@@ -758,7 +758,8 @@ namespace Server.Mobiles
 
 		public bool CanClaim( Mobile from, BaseCreature pet )
 		{
-			if (from is PlayerMobile player)
+			PlayerMobile player = from as PlayerMobile;
+			if (player != null)
 			{
 				if ( pet is Manchas && player.AllFollowers.Exists(f => f is Manchas) )
 				{

@@ -23,7 +23,7 @@ namespace Server.Items
 			Name = "rune rucksack";
 			Hue = 0x883;
 			m_ContainedItems = 0; // Initialize the count.
-			}
+		}
 
 		public override bool CanAdd(Mobile from, Item item)
 		{
@@ -33,10 +33,19 @@ namespace Server.Items
 				return false;
 			}
 
+			if (item is RunePouch runePouch)
+			{
+				if (runePouch.ContainedItems + m_ContainedItems >= MaxItems)
+				{
+					from.SendMessage("Adding this rune rucksack would exceed the maximum capacity.");
+					return false;
+				}
+			}
+
 			if (item is Key ||
 				item is RecallRune ||
 				item is Runebook ||
-				item is RunePouch )
+				item is RunePouch)
 			{
 				return true;
 			}
@@ -84,12 +93,22 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 			writer.Write( (int) 0 ); // version
+			writer.Write(m_ContainedItems); // Serialize ContainedItems
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+			m_ContainedItems = reader.ReadInt(); // Deserialize ContainedItems
+
+			// Recalculate the total items to ensure accuracy
+			m_ContainedItems = 0;
+			foreach (Item item in Items)
+			{
+				m_ContainedItems += GetTotalItems(item);
+			}
+
 			Weight = 1.0;
 			MaxItems = 100;
 			Name = "rune rucksack";
@@ -114,7 +133,7 @@ namespace Server.Items
 			switch (type)
 			{
 				case TotalType.Items:
-					m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + delta)); // Ensure within bounds.
+					m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems)); // Update the tracked count.
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;
 

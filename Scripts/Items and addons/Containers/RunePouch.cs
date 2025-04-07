@@ -35,9 +35,17 @@ namespace Server.Items
 			RunePouch runepouch = item as RunePouch;
 			if (runepouch != null)
 			{
+				// Check if the item is a RunePouch and if it is nested or already inside another RunePouch
+				// This prevents nesting of RunePouches within each other.
+				if (IsInvalidRunePouchNesting(runepouch))
+				{
+					return false;
+				}
+
+				// Check if adding the items from the other RunePouch exceeds MaxItems
 				if (runepouch.ContainedItems + m_ContainedItems >= MaxItems)
 				{
-					return false; // Do not send a message here to avoid duplication.
+					return false;
 				}
 			}
 
@@ -52,6 +60,22 @@ namespace Server.Items
 			return false;
 		}
 
+		private bool IsInvalidRunePouchNesting(RunePouch runepouch)
+		{
+			// Check if the RunePouch is already inside another RunePouch
+			return runepouch.Parent is RunePouch;
+			// Check if the RunePouch contains another RunePouch
+			foreach (Item subItem in runepouch.Items)
+			{
+				if (subItem is RunePouch)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
 		public override bool OnDragDropInto(Mobile from, Item dropped, Point3D p)
 		{
 			if (CanAdd(from, dropped))
@@ -60,7 +84,12 @@ namespace Server.Items
 			}
 
 			RunePouch runepouch = dropped as RunePouch;
-			if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
+			if (runepouch != null && IsInvalidRunePouchNesting(runepouch))
+			{
+				from.SendMessage("You may not nest rune rucksacks more than once.");
+
+			}
+			else if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
 			{
 				from.SendMessage("This rucksack cannot hold any more items.");
 			}

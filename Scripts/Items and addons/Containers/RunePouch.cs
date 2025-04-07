@@ -119,7 +119,12 @@ namespace Server.Items
 			}
 
 			RunePouch runepouch = dropped as RunePouch;
-			if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
+			if (runepouch != null && IsInvalidRunePouchNesting(runepouch))
+			{
+				from.SendMessage("You may not nest rune rucksacks more than once.");
+
+			}
+			else if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
 			{
 				from.SendMessage("This rucksack cannot hold any more items.");
 			}

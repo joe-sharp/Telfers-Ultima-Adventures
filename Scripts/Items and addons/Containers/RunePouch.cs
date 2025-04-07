@@ -68,6 +68,7 @@ namespace Server.Items
 			{
 				return true;
 			}
+			Console.WriteLine("[DEBUG] Invalid nesting: Parent is a RunePouch.");
 
 			// Check if the RunePouch contains another RunePouch
 			foreach (Item subItem in runepouch.Items)

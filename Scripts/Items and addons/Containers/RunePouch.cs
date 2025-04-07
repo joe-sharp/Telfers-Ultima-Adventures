@@ -165,7 +165,14 @@ namespace Server.Items
 					RunePouch runepouch = sender as RunePouch;
 					if (runepouch != null)
 					{
-						m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + runepouch.ContainedItems + delta));
+						if (delta > 0)
+						{
+							m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + runepouch.ContainedItems + delta));
+						}
+						else
+						{
+							m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems - runepouch.ContainedItems + delta));
+						}
 					}
 					else
 					{

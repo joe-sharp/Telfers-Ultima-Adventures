@@ -29,8 +29,7 @@ namespace Server.Items
 		{
 			if (m_ContainedItems >= MaxItems)
 			{
-				from.SendMessage("This rucksack cannot hold any more items.");
-				return false;
+				return false; // Do not send a message here to avoid duplication.
 			}
 
 			RunePouch runepouch = item as RunePouch;
@@ -38,8 +37,7 @@ namespace Server.Items
 			{
 				if (runepouch.ContainedItems + m_ContainedItems >= MaxItems)
 				{
-					from.SendMessage("Adding this rune rucksack would exceed the maximum capacity.");
-					return false;
+					return false; // Do not send a message here to avoid duplication.
 				}
 			}
 
@@ -54,13 +52,20 @@ namespace Server.Items
 			return false;
 		}
 
-		public override bool OnDragDropInto( Mobile from, Item dropped, Point3D p )
-        {
-			if (CanAdd(from, dropped)) return base.OnDragDropInto(from, dropped, p);
-
-			if ( dropped is Container )
+		public override bool OnDragDropInto(Mobile from, Item dropped, Point3D p)
+		{
+			if (CanAdd(from, dropped))
 			{
-                from.SendMessage("You can only use another rune rucksack within this sack.");
+				return base.OnDragDropInto(from, dropped, p);
+			}
+
+			if (m_ContainedItems >= MaxItems)
+			{
+				from.SendMessage("This rucksack cannot hold any more items.");
+			}
+			else if (dropped is Container)
+			{
+				from.SendMessage("You can only use another rune rucksack within this sack.");
 			}
 			else
 			{
@@ -68,15 +73,22 @@ namespace Server.Items
 			}
 
 			return false;
-        }
+		}
 
-        public override bool OnDragDrop( Mobile from, Item dropped )
-        {
-			if (CanAdd(from, dropped)) return base.OnDragDrop(from, dropped);
-
-			if ( dropped is Container)
+		public override bool OnDragDrop(Mobile from, Item dropped)
+		{
+			if (CanAdd(from, dropped))
 			{
-                from.SendMessage("You can only use another rune rucksack within this sack.");
+				return base.OnDragDrop(from, dropped);
+			}
+
+			if (m_ContainedItems >= MaxItems)
+			{
+				from.SendMessage("This rucksack cannot hold any more items.");
+			}
+			else if (dropped is Container)
+			{
+				from.SendMessage("You can only use another rune rucksack within this sack.");
 			}
 			else
 			{
@@ -84,7 +96,7 @@ namespace Server.Items
 			}
 
 			return false;
-        }
+		}
 
         public RunePouch( Serial serial ) : base( serial )
 		{

@@ -149,7 +149,7 @@ namespace Server.Items
 			switch (type)
 			{
 				case TotalType.Items:
-					m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems)); // Update the tracked count.
+					m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + delta)); // Update the tracked count.
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;
 

@@ -50,7 +50,7 @@ namespace Server.Items
 
 				// Check if adding the items would exceed the Parent's MaxItems
 				RunePouch parentPouch = this.Parent as RunePouch;
-				if (parentPouch != null && (runepouch.ContainedItems + m_ContainedItems >= parentPouch.MaxItems)
+				if (parentPouch != null && (runepouch.ContainedItems + m_ContainedItems >= parentPouch.MaxItems))
 				{
 					return false;
 				}

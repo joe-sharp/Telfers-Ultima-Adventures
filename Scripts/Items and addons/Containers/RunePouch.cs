@@ -64,7 +64,7 @@ namespace Server.Items
 		{
 
 			// Check if the parent is a RunePouch
-			if (runepouch.ParentEntity is RunePouch)
+			if (runepouch.Parent is RunePouch)
 			{
 				return true;
 			}

@@ -62,8 +62,11 @@ namespace Server.Items
 
 		private bool IsInvalidRunePouchNesting(RunePouch runepouch)
 		{
-			// Check if the RunePouch is already inside another RunePouch
-			if (runepouch.Parent is RunePouch)
+			// Resolve the parent entity
+			IEntity parent = runepouch.ParentEntity;
+
+			// Check if the parent is a RunePouch
+			if (parent is RunePouch)
 			{
 				return true;
 			}

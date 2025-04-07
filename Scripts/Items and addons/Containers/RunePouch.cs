@@ -33,9 +33,10 @@ namespace Server.Items
 				return false;
 			}
 
-			if (item is RunePouch runePouch)
+			RunePouch runepouch = item as RunePouch;
+			if (runepouch != null)
 			{
-				if (runePouch.ContainedItems + m_ContainedItems >= MaxItems)
+				if (runepouch.ContainedItems + m_ContainedItems >= MaxItems)
 				{
 					from.SendMessage("Adding this rune rucksack would exceed the maximum capacity.");
 					return false;
@@ -112,6 +113,21 @@ namespace Server.Items
 			Weight = 1.0;
 			MaxItems = 100;
 			Name = "rune rucksack";
+		}
+
+		private int GetTotalItems(Item item)
+		{
+			Container container = item as Container;
+			if (container != null)
+			{
+				int total = 0;
+				foreach (Item subItem in container.Items)
+				{
+					total += GetTotalItems(subItem); // Recursively count items in nested containers
+				}
+				return total;
+			}
+			return 1; // Count the item itself
 		}
 
 		public override int GetTotal(TotalType type)

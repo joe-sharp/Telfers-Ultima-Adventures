@@ -47,6 +47,13 @@ namespace Server.Items
 				{
 					return false;
 				}
+
+				// Check if adding the items would exceed the Parent's MaxItems
+				RunePouch parentPouch = this.Parent as RunePouch;
+				if (parentPouch != null && (runepouch.ContainedItems + m_ContainedItems >= parentPouch.MaxItems)
+				{
+					return false;
+				}
 			}
 
 			if (item is Key ||
@@ -224,6 +231,13 @@ namespace Server.Items
 					else
 					{
 						m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + delta));
+					}
+
+					// Propogate the changes to the parent RunePouch, if any
+					RunePouch parentPouch = this.Parent as RunePouch;
+					if (parentPouch != null)
+					{
+						parentPouch.UpdateTotal(sender, type, delta);
 					}
 
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.

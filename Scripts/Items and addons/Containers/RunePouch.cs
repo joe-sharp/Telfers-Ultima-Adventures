@@ -63,12 +63,17 @@ namespace Server.Items
 		private bool IsInvalidRunePouchNesting(RunePouch runepouch)
 		{
 
-			// Check if the parent is a RunePouch
+			// Check if the item being added is a RunePouch
 			if (runepouch.Parent is RunePouch)
 			{
 				return true;
 			}
-			Console.WriteLine("[DEBUG] Invalid nesting: Parent is a RunePouch.");
+
+			// Check if this RunePouch is already inside a RunePouch
+			if (this.Parent is RunePouch)
+			{
+				return true;
+			}
 
 			// Check if the RunePouch contains another RunePouch
 			foreach (Item subItem in runepouch.Items)

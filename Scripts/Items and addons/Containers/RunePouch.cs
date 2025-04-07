@@ -161,7 +161,17 @@ namespace Server.Items
 			switch (type)
 			{
 				case TotalType.Items:
-					m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + delta)); // Update the tracked count.
+					// If the sender is a RunePouch, account for its ContainedItems
+					RunePouch runepouch = sender as RunePouch;
+					if (runepouch != null)
+					{
+						m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + runepouch.ContainedItems + delta));
+					}
+					else
+					{
+						m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + delta));
+					}
+
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;
 

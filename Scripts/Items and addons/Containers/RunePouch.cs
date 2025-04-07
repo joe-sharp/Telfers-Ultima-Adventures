@@ -59,7 +59,8 @@ namespace Server.Items
 				return base.OnDragDropInto(from, dropped, p);
 			}
 
-			if (m_ContainedItems >= MaxItems)
+			RunePouch runepouch = dropped as RunePouch;
+			if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
 			{
 				from.SendMessage("This rucksack cannot hold any more items.");
 			}
@@ -82,7 +83,8 @@ namespace Server.Items
 				return base.OnDragDrop(from, dropped);
 			}
 
-			if (m_ContainedItems >= MaxItems)
+			RunePouch runepouch = dropped as RunePouch;
+			if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
 			{
 				from.SendMessage("This rucksack cannot hold any more items.");
 			}

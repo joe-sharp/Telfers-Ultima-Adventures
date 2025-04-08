@@ -27,6 +27,7 @@ namespace Server.Items
 
 		public override bool CanAdd(Mobile from, Item item)
 		{
+			// Check if we would exceed the MaxItems limit
 			if (m_ContainedItems >= MaxItems)
 			{
 				return false; // Do not send a message here to avoid duplication.
@@ -35,8 +36,7 @@ namespace Server.Items
 			RunePouch runepouch = item as RunePouch;
 			if (runepouch != null)
 			{
-				// Check if the item is a RunePouch and if it is nested or already inside another RunePouch
-				// This prevents nesting of RunePouches within each other.
+				// Enforce single layer nesting of RunePouches
 				if (IsInvalidRunePouchNesting(runepouch))
 				{
 					return false;
@@ -234,11 +234,12 @@ namespace Server.Items
 					}
 
 					// Propogate the changes to the parent RunePouch, if any
-					RunePouch parentPouch = this.Parent as RunePouch;
-					if (parentPouch != null)
-					{
-						parentPouch.UpdateTotal(sender, type, delta);
-					}
+					// RunePouch parentPouch = this.Parent as RunePouch;
+					// if (parentPouch != null)
+					// {
+					// 	parentPouch.UpdateTotal(sender, type, delta);
+					// }
+					console.WriteLine($"RunePouch: Sender: {sender} called UpdateTotal with delta: {delta}, ContainedItems: {m_ContainedItems}");
 
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;

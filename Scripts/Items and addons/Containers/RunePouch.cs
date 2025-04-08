@@ -30,6 +30,7 @@ namespace Server.Items
 			// Check if we would exceed the MaxItems limit
 			if (m_ContainedItems >= MaxItems)
 			{
+				from.SendMessage("This rucksack cannot hold any more items.");
 				return false; // Do not send a message here to avoid duplication.
 			}
 
@@ -37,6 +38,7 @@ namespace Server.Items
 			RunePouch parentPouch = this.Parent as RunePouch;
 			if (parentPouch != null && m_ContainedItems + parentPouch.ContainedItems >= parentPouch.MaxItems)
 			{
+				from.SendMessage("The rucksack this one is in cannot hold any more items.");
 				return false;
 			}
 
@@ -46,12 +48,14 @@ namespace Server.Items
 				// Enforce single layer nesting of RunePouches
 				if (IsInvalidRunePouchNesting(runepouch))
 				{
+					from.SendMessage("You may not nest rune rucksacks more than once.");
 					return false;
 				}
 
 				// Check if adding the items from the RunePouch exceeds MaxItems
 				if (runepouch.ContainedItems + m_ContainedItems >= MaxItems)
 				{
+					from.SendMessage("This rucksack cannot hold any more items.");
 					return false;
 				}
 			}
@@ -62,6 +66,15 @@ namespace Server.Items
 				item is RunePouch)
 			{
 				return true;
+			}
+
+			if (item is Container)
+			{
+				from.SendMessage("You can only use another rune rucksack within this sack.");
+			}
+			else
+			{
+				from.SendMessage("This rucksack is for runes and runebooks.");
 			}
 
 			return false;
@@ -101,25 +114,6 @@ namespace Server.Items
 				return base.OnDragDropInto(from, dropped, p);
 			}
 
-			RunePouch runepouch = dropped as RunePouch;
-			if (runepouch != null && IsInvalidRunePouchNesting(runepouch))
-			{
-				from.SendMessage("You may not nest rune rucksacks more than once.");
-
-			}
-			else if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
-			{
-				from.SendMessage("This rucksack cannot hold any more items.");
-			}
-			else if (dropped is Container)
-			{
-				from.SendMessage("You can only use another rune rucksack within this sack.");
-			}
-			else
-			{
-				from.SendMessage("This rucksack is for runes and runebooks.");
-			}
-
 			return false;
 		}
 
@@ -128,25 +122,6 @@ namespace Server.Items
 			if (CanAdd(from, dropped))
 			{
 				return base.OnDragDrop(from, dropped);
-			}
-
-			RunePouch runepouch = dropped as RunePouch;
-			if (runepouch != null && IsInvalidRunePouchNesting(runepouch))
-			{
-				from.SendMessage("You may not nest rune rucksacks more than once.");
-
-			}
-			else if (m_ContainedItems >= MaxItems || (runepouch != null && runepouch.ContainedItems + m_ContainedItems > MaxItems))
-			{
-				from.SendMessage("This rucksack cannot hold any more items.");
-			}
-			else if (dropped is Container)
-			{
-				from.SendMessage("You can only use another rune rucksack within this sack.");
-			}
-			else
-			{
-				from.SendMessage("This rucksack is for runes and runebooks.");
 			}
 
 			return false;

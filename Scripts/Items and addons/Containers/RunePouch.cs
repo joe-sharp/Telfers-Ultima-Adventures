@@ -19,7 +19,7 @@ namespace Server.Items
 		public RunePouch() : base()
 		{
 			Weight = 1.0;
-			MaxItems = 100;
+			MaxItems = 110;
 			Name = "rune rucksack";
 			Hue = 0x883;
 			m_ContainedItems = 0; // Initialize the count.
@@ -27,11 +27,17 @@ namespace Server.Items
 
 		public override bool CanAdd(Mobile from, Item item)
 		{
-			Console.WriteLine("RunePouch: CanAdd called with item: {0}", item);
 			// Check if we would exceed the MaxItems limit
 			if (m_ContainedItems >= MaxItems)
 			{
 				return false; // Do not send a message here to avoid duplication.
+			}
+			
+			// Check if adding the items would exceed the Parent's MaxItems
+			RunePouch parentPouch = this.Parent as RunePouch;
+			if (parentPouch != null && (runepouch.ContainedItems + m_ContainedItems >= parentPouch.MaxItems))
+			{
+				return false;
 			}
 
 			RunePouch runepouch = item as RunePouch;
@@ -43,15 +49,8 @@ namespace Server.Items
 					return false;
 				}
 
-				// Check if adding the items from the other RunePouch exceeds MaxItems
+				// Check if adding the items from the RunePouch exceeds MaxItems
 				if (runepouch.ContainedItems + m_ContainedItems >= MaxItems)
-				{
-					return false;
-				}
-
-				// Check if adding the items would exceed the Parent's MaxItems
-				RunePouch parentPouch = this.Parent as RunePouch;
-				if (parentPouch != null && (runepouch.ContainedItems + m_ContainedItems >= parentPouch.MaxItems))
 				{
 					return false;
 				}

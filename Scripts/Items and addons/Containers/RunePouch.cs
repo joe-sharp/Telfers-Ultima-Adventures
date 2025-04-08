@@ -38,7 +38,7 @@ namespace Server.Items
 			RunePouch parentPouch = this.Parent as RunePouch;
 			if (parentPouch != null && m_ContainedItems + parentPouch.ContainedItems >= parentPouch.MaxItems)
 			{
-				from.SendMessage("The rucksack this one is in cannot hold any more items.");
+				from.SendMessage("The rucksack inside this one cannot hold any more items.");
 				return false;
 			}
 
@@ -152,7 +152,7 @@ namespace Server.Items
 			}
 
 			Weight = 1.0;
-			MaxItems = 100;
+			MaxItems = 110;
 			Name = "rune rucksack";
 		}
 

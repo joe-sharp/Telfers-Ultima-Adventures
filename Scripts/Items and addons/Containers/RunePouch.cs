@@ -27,6 +27,7 @@ namespace Server.Items
 
 		public override bool CanAdd(Mobile from, Item item)
 		{
+			Console.WriteLine("RunePouch: CanAdd called with item: {0}", item);
 			// Check if we would exceed the MaxItems limit
 			if (m_ContainedItems >= MaxItems)
 			{
@@ -232,14 +233,6 @@ namespace Server.Items
 					{
 						m_ContainedItems = Math.Max(0, Math.Min(MaxItems, m_ContainedItems + delta));
 					}
-
-					// Propogate the changes to the parent RunePouch, if any
-					// RunePouch parentPouch = this.Parent as RunePouch;
-					// if (parentPouch != null)
-					// {
-					// 	parentPouch.UpdateTotal(sender, type, delta);
-					// }
-					Console.WriteLine("RunePouch: Sender: {0} called UpdateTotal with delta: {1}, ContainedItems: {2}", sender, delta, m_ContainedItems);
 
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;

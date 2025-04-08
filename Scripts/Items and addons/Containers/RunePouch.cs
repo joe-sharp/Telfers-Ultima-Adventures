@@ -239,7 +239,7 @@ namespace Server.Items
 					// {
 					// 	parentPouch.UpdateTotal(sender, type, delta);
 					// }
-					Console.WriteLine($"RunePouch: Sender: {sender} called UpdateTotal with delta: {delta}, ContainedItems: {m_ContainedItems}");
+					Console.WriteLine("RunePouch: Sender: {0} called UpdateTotal with delta: {1}, ContainedItems: {2}", sender, delta, m_ContainedItems);
 
 					base.UpdateTotal(sender, type, 0); // Prevent affecting the player's total items.
 					break;

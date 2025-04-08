@@ -32,10 +32,10 @@ namespace Server.Items
 			{
 				return false; // Do not send a message here to avoid duplication.
 			}
-			
-			// Check if adding the items would exceed the Parent's MaxItems
+
+			// Check if we would exceeed the Parent's MaxItems limit
 			RunePouch parentPouch = this.Parent as RunePouch;
-			if (parentPouch != null && (runepouch.ContainedItems + m_ContainedItems >= parentPouch.MaxItems))
+			if (parentPouch != null && m_ContainedItems + parentPouch.ContainedItems >= parentPouch.MaxItems)
 			{
 				return false;
 			}

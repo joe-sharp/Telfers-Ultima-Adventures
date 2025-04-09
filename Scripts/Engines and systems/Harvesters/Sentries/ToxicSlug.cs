@@ -89,12 +89,25 @@ namespace Server.Mobiles
 			return new AcidSlime( TimeSpan.FromSeconds(10), 5, 10 );
 		}
 
-		public override bool IsEnemy( Mobile m )
+		public override bool IsEnemy(Mobile m)
 		{
-  			if (m_owner != null && m == m_owner && m.Combatant != this)
-     				return false;
-	 		return base.IsEnemy(m);
-    		}
+			if (m_owner != null)
+			{
+				if (m == m_owner && m.Combatant != this)
+					return false;
+
+				if (m_owner is PlayerMobile player && player.AllFollowers != null)
+				{
+					foreach (Mobile follower in player.AllFollowers)
+					{
+						if (m == follower && m.Combatant != this)
+							return false;
+					}
+				}
+			}
+
+			return base.IsEnemy(m);
+		}
 
 		public ToxicSlug( Serial serial ) : base( serial )
 		{

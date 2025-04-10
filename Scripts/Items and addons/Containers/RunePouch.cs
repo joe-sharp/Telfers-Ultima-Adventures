@@ -36,7 +36,7 @@ namespace Server.Items
 
 			// Check if we would exceeed the Parent's MaxItems limit
 			RunePouch parentPouch = this.Parent as RunePouch;
-			if (parentPouch != null && m_ContainedItems + parentPouch.ContainedItems >= parentPouch.MaxItems)
+			if (parentPouch != null && parentPouch.ContainedItems >= parentPouch.MaxItems)
 			{
 				from.SendMessage("The rucksack inside this one cannot hold any more items.");
 				return false;

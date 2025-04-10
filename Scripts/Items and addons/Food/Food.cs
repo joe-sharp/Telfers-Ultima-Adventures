@@ -226,7 +226,7 @@ namespace Server.Items
 					if (from.Hunger > (20 + fd.Benefit) )
 						from.Hunger = 20 + fd.Benefit;
 
-					from.SendMessage("The you eat more food because it's so delicious.");
+					from.SendMessage("You eat more food because it's so delicious.");
 					return true;
 				}
 				

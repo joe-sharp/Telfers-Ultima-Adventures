@@ -96,12 +96,16 @@ namespace Server.Mobiles
 				if (m == m_owner && m.Combatant != this)
 					return false;
 
-				if (m_owner is PlayerMobile player && player.AllFollowers != null)
+				if (m_owner != null && m_owner is PlayerMobile)
 				{
-					foreach (Mobile follower in player.AllFollowers)
+					PlayerMobile player = m_owner as PlayerMobile;
+					if (player.AllFollowers != null)
 					{
-						if (m == follower && m.Combatant != this)
-							return false;
+						foreach (Mobile follower in player.AllFollowers)
+						{
+							if (m == follower && m.Combatant != this)
+								return false;
+						}
 					}
 				}
 			}

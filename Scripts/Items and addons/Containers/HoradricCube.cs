@@ -33,7 +33,7 @@ namespace Server.Items
             PlayerMobile player = from as PlayerMobile;
             if (player != null)
             {
-                player.PrivateOverheadMessage("Place harvest tools into the cube and single-click to transmute them.");
+                player.PrivateOverheadMessage(MessageType.Regular, 0xB08, false, "Place harvest tools into the cube and single-click to transmute them.");
                 base.OnDoubleClick(from); // Opens the container
             }
         }
@@ -70,11 +70,11 @@ namespace Server.Items
 
             if (toolMap.Count > 0)
             {
-                from.PrivateOverheadMessage("The transmutation is complete. The tools have been combined.");
+                from.PrivateOverheadMessage(MessageType.Regular, 0xB08, false, "The transmutation is complete. The tools have been combined.");
             }
             else
             {
-                from.PrivateOverheadMessage("There are no valid harvest tools in the cube to transmute.");
+                from.PrivateOverheadMessage(MessageType.Regular, 0xB08, false, "There are no valid harvest tools in the cube to transmute.");
             }
         }
 

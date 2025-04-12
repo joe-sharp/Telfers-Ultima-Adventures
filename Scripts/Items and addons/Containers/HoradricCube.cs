@@ -112,7 +112,7 @@ namespace Server.Items
         private HoradricCube m_Cube;
         private Mobile m_From;
 
-        public TransmuteContainer(HoradricCube cube, Mobile from) : base(6189, 2) // Use string literal
+        public TransmuteContainer(HoradricCube cube, Mobile from) : base(6190, 2) // Use string literal
         {
             m_Cube = cube;
             m_From = from;

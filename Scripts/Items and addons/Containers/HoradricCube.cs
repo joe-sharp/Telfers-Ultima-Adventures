@@ -37,6 +37,17 @@ namespace Server.Items
         {
             Dictionary<Type, BaseHarvestTool> toolMap = new Dictionary<Type, BaseHarvestTool>();
             Dictionary<Type, int> usesMap = new Dictionary<Type, int>();
+            List<Item> itemsToDelete = new List<Item>(); // Collect items to delete
+
+            if (from == null || !from.CheckAlive())
+            {
+                return;
+            }
+            if (Items.Count == 0)
+            {
+                from.PrivateOverheadMessage(0, 0xAD4, false, "This cube can transmute harvest tools. Double-click to learn more.", from.NetState);
+                return;
+            }
 
             foreach (Item item in Items)
             {
@@ -53,9 +64,15 @@ namespace Server.Items
                     else
                     {
                         usesMap[toolType] += tool.UsesRemaining;
-                        tool.Delete();
+                        itemsToDelete.Add(tool); // Add to delete list
                     }
                 }
+            }
+
+            // Delete items after iteration
+            foreach (Item item in itemsToDelete)
+            {
+                item.Delete();
             }
 
             foreach (KeyValuePair<Type, BaseHarvestTool> kvp in toolMap)
@@ -95,24 +112,16 @@ namespace Server.Items
         private HoradricCube m_Cube;
         private Mobile m_From;
 
-        public TransmuteContainer(HoradricCube cube, Mobile from) : base(1111681, 4) // Custom context menu ID
+        public TransmuteContainer(HoradricCube cube, Mobile from) : base(6189, 2) // Use string literal
         {
             m_Cube = cube;
             m_From = from;
         }
-
         public override void OnClick()
         {
             if (m_From.InRange(m_Cube.GetWorldLocation(), 2))
             {
-                if (m_Cube.Items.Count == 0)
-                {
-                    m_From.PrivateOverheadMessage(MessageType.Regular, 0xAD4, 3, "This cube can transmute harvest tools. Double-click to learn more.", m_From.NetState);
-                }
-                else
-                {
-                    m_Cube.Transmute(m_From);
-                }
+                m_Cube.Transmute(m_From);
             }
             else
             {

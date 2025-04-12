@@ -20,8 +20,6 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.PrivateOverheadMessage(0, 0xAD4, false, "I combine charges from many tools onto one, and make clean stacks", from.NetState);
-            from.PrivateOverheadMessage(0, 0xAD4, false, "Place multiple items of the same type into the cube and use the context menu to transmute them.", from.NetState);
             base.OnDoubleClick(from); // Opens the container
         }
 
@@ -47,7 +45,8 @@ namespace Server.Items
             }
             if (Items.Count == 0)
             {
-                from.PrivateOverheadMessage(0, 0xAD4, false, "This cube can transmute harvest tools and stackable items. Double-click to learn more.", from.NetState);
+                from.PrivateOverheadMessage(0, 0xAD4, false, "I combine charges from many tools onto one, and make clean stacks", from.NetState);
+                from.PrivateOverheadMessage(0, 0xAD4, false, "Place multiple items of the same type into the cube and use the context menu to transmute them.", from.NetState);
                 return;
             }
 

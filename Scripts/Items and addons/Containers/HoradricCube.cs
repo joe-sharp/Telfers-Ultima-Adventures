@@ -20,7 +20,8 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.PrivateOverheadMessage(0, 0xAD4, false, "Place harvest tools into the cube and use the context menu to transmute them.", from.NetState);
+            from.PrivateOverheadMessage(0, 0xAD4, false, "I combine charges from many tools onto one, and make clean stacks", from.NetState);
+            from.PrivateOverheadMessage(0, 0xAD4, false, "Place multiple items of the same type into the cube and use the context menu to transmute them.", from.NetState);
             base.OnDoubleClick(from); // Opens the container
         }
 
@@ -38,6 +39,7 @@ namespace Server.Items
             Dictionary<Type, BaseHarvestTool> toolMap = new Dictionary<Type, BaseHarvestTool>();
             Dictionary<Type, int> usesMap = new Dictionary<Type, int>();
             List<Item> itemsToDelete = new List<Item>(); // Collect items to delete
+            Dictionary<Type, int> stackableItems = new Dictionary<Type, int>(); // Track stackable items
 
             if (from == null || !from.CheckAlive())
             {
@@ -45,12 +47,13 @@ namespace Server.Items
             }
             if (Items.Count == 0)
             {
-                from.PrivateOverheadMessage(0, 0xAD4, false, "This cube can transmute harvest tools. Double-click to learn more.", from.NetState);
+                from.PrivateOverheadMessage(0, 0xAD4, false, "This cube can transmute harvest tools and stackable items. Double-click to learn more.", from.NetState);
                 return;
             }
 
             foreach (Item item in Items)
             {
+                // Handle harvest tools
                 BaseHarvestTool tool = item as BaseHarvestTool;
                 if (tool != null)
                 {
@@ -66,6 +69,23 @@ namespace Server.Items
                         usesMap[toolType] += tool.UsesRemaining;
                         itemsToDelete.Add(tool); // Add to delete list
                     }
+                    continue;
+                }
+
+                // Handle stackable items
+                if (item.Stackable)
+                {
+                    Type itemType = item.GetType();
+
+                    if (!stackableItems.ContainsKey(itemType))
+                    {
+                        stackableItems[itemType] = item.Amount;
+                    }
+                    else
+                    {
+                        stackableItems[itemType] += item.Amount;
+                    }
+                    itemsToDelete.Add(item); // Add to delete list
                 }
             }
 
@@ -75,18 +95,38 @@ namespace Server.Items
                 item.Delete();
             }
 
+            // Combine harvest tools
             foreach (KeyValuePair<Type, BaseHarvestTool> kvp in toolMap)
             {
                 kvp.Value.UsesRemaining = usesMap[kvp.Key];
             }
 
-            if (toolMap.Count > 0)
+            // Create even stacks of 60000 for stackable items
+            foreach (KeyValuePair<Type, int> kvp in stackableItems)
             {
-                from.PrivateOverheadMessage(0, 0xAD4, false, "The transmutation is complete. The tools have been combined.", from.NetState);
+                int totalAmount = kvp.Value;
+                Type itemType = kvp.Key;
+
+                while (totalAmount > 0)
+                {
+                    int stackAmount = Math.Min(totalAmount, 60000);
+                    totalAmount -= stackAmount;
+
+                    Item newItem = (Item)Activator.CreateInstance(itemType);
+                    newItem.Amount = stackAmount;
+                    DropItem(newItem); // Add the new stack to the cube
+                }
+            }
+
+            // Send feedback to the player
+            if (toolMap.Count > 0 || stackableItems.Count > 0)
+            {
+                from.PrivateOverheadMessage(0, 0xAD4, false, "Transmutation Complete!", from.NetState);
+                from.PlaySound( 0x1F5 );
             }
             else
             {
-                from.PrivateOverheadMessage(0, 0xAD4, false, "There are no valid harvest tools in the cube to transmute.", from.NetState);
+                from.PrivateOverheadMessage(0, 0xAD4, false, "There are no valid items in the cube to transmute.", from.NetState);
             }
         }
 

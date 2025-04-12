@@ -7,15 +7,18 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class HoradricCube : Container
+    public class HoradricCube : BaseContainer
     {
+        public override int ArtifactRarity{ get{ return 0xD2; } } // 210
+
         [Constructable]
         public HoradricCube() : base(0x5D5)
         {
             Name = "Horadric Cube";
-            Weight = 1.0;
             GumpID = 0x976;
             Hue = 0xB08;
+			Light = LightType.Circle150;
+            Weight = 1.0;
         }
 
         public override void OnDoubleClick(Mobile from)

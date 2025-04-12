@@ -25,6 +25,11 @@ namespace Server.Items
 		{
 		}
 
+		public virtual int ArtifactRarity
+		{
+			get{ return 0; }
+		}
+
 		public override bool IsAccessibleTo( Mobile m )
 		{
 			if ( !BaseHouse.CheckAccessible( m, this ) )

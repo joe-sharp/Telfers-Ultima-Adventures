@@ -2756,7 +2756,8 @@ namespace Server.Misc
 						foreach ( Item stuff in belongings )
 						{
 							o++;
-							if ( c == o ){ ((BaseCreature)m).PackItem( stuff ); from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, m.Name + " stole something from you!"); }
+							// if ( c == o ){ ((BaseCreature)m).PackItem( stuff ); from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, m.Name + " stole something from you!"); }
+							if ( c == o ){ from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, m.Name + " is a goddamn theif, but Telfer returned your item!"); }
 						}
 					}
 				}

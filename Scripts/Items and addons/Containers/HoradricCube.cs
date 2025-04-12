@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Server;
+using Server.Network;
 using Server.Mobiles;
-using Server; // Add this namespace for MessageType
 
 namespace Server.Items
 {
@@ -31,12 +32,8 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            PlayerMobile player = from as PlayerMobile;
-            if (player != null)
-            {
-                player.PrivateOverheadMessage(Server.Network.MessageType.Regular, 0xB08, false, "Place harvest tools into the cube and single-click to transmute them.");
-                base.OnDoubleClick(from); // Opens the container
-            }
+            from.PrivateOverheadMessage(0, 0xB08, false, "Place harvest tools into the cube and single-click to transmute them.", from.NetState);
+            base.OnDoubleClick(from); // Opens the container
         }
 
         private void Transmute(Mobile from)
@@ -71,11 +68,11 @@ namespace Server.Items
 
             if (toolMap.Count > 0)
             {
-                from.PrivateOverheadMessage(Server.Network.MessageType.Regular, 0xB08, false, "The transmutation is complete. The tools have been combined.");
+                from.PrivateOverheadMessage(0, 0xB08, false, "The transmutation is complete. The tools have been combined.", from.NetState);
             }
             else
             {
-                from.PrivateOverheadMessage(Server.Network.MessageType.Regular, 0xB08, false, "There are no valid harvest tools in the cube to transmute.");
+                from.PrivateOverheadMessage(0, 0xB08, false, "There are no valid harvest tools in the cube to transmute.", from.NetState);
             }
         }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server;
+using Server.ContextMenus;
 using Server.Network;
 using Server.Mobiles;
 
@@ -15,28 +16,24 @@ namespace Server.Items
             Weight = 1.0;
             GumpID = 0x976;
             Hue = 0xB08;
-
-        }
-
-        public override void OnSingleClick(Mobile from)
-        {
-            if (Items.Count == 0)
-            {
-                LabelTo(from, "This cube can transmute harvest tools. Double-click to learn more.");
-            }
-            else
-            {
-                Transmute(from);
-            }
         }
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.PrivateOverheadMessage(0, 0xB08, false, "Place harvest tools into the cube and single-click to transmute them.", from.NetState);
+            from.PrivateOverheadMessage(0, 0xAD4, false, "Place harvest tools into the cube and use the context menu to transmute them.", from.NetState);
             base.OnDoubleClick(from); // Opens the container
         }
 
-        private void Transmute(Mobile from)
+        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
+        {
+            base.GetContextMenuEntries(from, list);
+            if (from.InRange(this.GetWorldLocation(), 2))
+            {
+                list.Add(new TransmuteContainer(this, from));
+            }
+        }
+
+        internal void Transmute(Mobile from)
         {
             Dictionary<Type, BaseHarvestTool> toolMap = new Dictionary<Type, BaseHarvestTool>();
             Dictionary<Type, int> usesMap = new Dictionary<Type, int>();
@@ -68,11 +65,11 @@ namespace Server.Items
 
             if (toolMap.Count > 0)
             {
-                from.PrivateOverheadMessage(0, 0xB08, false, "The transmutation is complete. The tools have been combined.", from.NetState);
+                from.PrivateOverheadMessage(0, 0xAD4, false, "The transmutation is complete. The tools have been combined.", from.NetState);
             }
             else
             {
-                from.PrivateOverheadMessage(0, 0xB08, false, "There are no valid harvest tools in the cube to transmute.", from.NetState);
+                from.PrivateOverheadMessage(0, 0xAD4, false, "There are no valid harvest tools in the cube to transmute.", from.NetState);
             }
         }
 
@@ -90,6 +87,37 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+        }
+    }
+
+    public class TransmuteContainer : ContextMenuEntry
+    {
+        private HoradricCube m_Cube;
+        private Mobile m_From;
+
+        public TransmuteContainer(HoradricCube cube, Mobile from) : base(1111681, 4) // Custom context menu ID
+        {
+            m_Cube = cube;
+            m_From = from;
+        }
+
+        public override void OnClick()
+        {
+            if (m_From.InRange(m_Cube.GetWorldLocation(), 2))
+            {
+                if (m_Cube.Items.Count == 0)
+                {
+                    m_From.PrivateOverheadMessage(MessageType.Regular, 0xAD4, 3, "This cube can transmute harvest tools. Double-click to learn more.", m_From.NetState);
+                }
+                else
+                {
+                    m_Cube.Transmute(m_From);
+                }
+            }
+            else
+            {
+                m_From.SendLocalizedMessage(500446); // That is too far away.
+            }
         }
     }
 }

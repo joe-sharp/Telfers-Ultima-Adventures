@@ -14,7 +14,7 @@ namespace Server.Custom.Testing.Quests
             Body = 137;
             Hue = 2769;
             SetHits( 279, 304 );
-            AddItem( new SoulstoneShard() );
+            PackItem( new SoulstoneShard() );
         }
 
         public ShadowOfDiablo(Serial serial) : base(serial) { }

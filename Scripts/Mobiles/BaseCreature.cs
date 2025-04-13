@@ -15,6 +15,7 @@ using Server.Spells.Necromancy;
 using Server.Engines.CannedEvil;
 using Server.Misc;
 using Server.Custom;
+using Server.Custom.Testing.Quests;
 using System.Text;
 using Server;
 using System.IO;
@@ -2350,6 +2351,7 @@ namespace Server.Mobiles
 			else if ( m is GauntletMaster ){ return true; }
 			else if ( m is CloneCharacterOnLogout.CharacterClone ){ return true; }
 			else if ( m is DoomVarietyDealer ){ return true; }
+			else if ( m is DeckardCain ){ return true; }
 
 			return false;
 		}

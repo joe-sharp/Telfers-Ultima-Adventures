@@ -61,13 +61,13 @@ namespace Server.Custom.Testing.Quests
 
             if (e.Speech.ToLower().Contains("soulstone"))
             {
-                from.SendMessage("Long ago, the Soulstones were given to the Horadrim to contain the Prime Evils.");
-                from.SendMessage("I now know that even these holy artifacts were no match for Diablo's power.");
-                from.SendMessage("If you can recover the Soulstone Shard from the Shadow of Diablo, I will reward you with a device long passed down by the Horadrim.");
+                Say("Long ago, the Soulstones were given to the Horadrim to contain the Prime Evils.");
+                Say("I now know that even these holy artifacts were no match for Diablo's power.");
+                Say("If you can recover the Soulstone Shard from the Shadow of Diablo, I will reward you with a device long passed down by the Horadrim.");
             }
-            else if (e.Speech.ToLower().Contains("the grandfather"))
+            else if (e.Speech.ToLower().Contains("grandfather"))
             {
-                from.SendMessage("You must bring me the Soulstone Shard first!");
+                Say("An unbroken lineage of unwavering strength.");
             }
 
             base.OnSpeech(e);
@@ -123,14 +123,14 @@ namespace Server.Custom.Testing.Quests
                 if (dropped is SoulstoneShard)
                 {
                     dropped.Delete();
-                    mobile.SendMessage("You've recovered the Soulstone Shard! My thanks, please accept this ancient artifact of the Horadrim");
+                    Say("You've recovered the Soulstone Shard! My thanks, please accept this ancient artifact of the Horadrim");
                     mobile.AddToBackpack(new HoradricCube());
                     
                     return true;
                 }
                 else if (dropped is TheOldGrandfather)
                 {
-                    mobile.SendMessage("You have defeated Diablo! Thank you, hero!");
+                    Say("You have defeated Diablo! Thank you, hero!");
                     return true;
                 }
                 else
